@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>سکه و طلای ستاری | حرفه‌ای</title>
+<link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(145deg, #0f172a 0%, #1a2a3a 100%);
+  font-family: 'Vazir', system-ui, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle at 30% 20%, rgba(255,180,71,0.06) 0%, transparent 70%);
+  animation: floatBG 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes floatBG {
+  0%, 100% { transform: translate(-10%, -10%) rotate(0deg); }
+  50% { transform: translate(10%, 10%) rotate(5deg); }
+}
+
+.glass-card {
+  background: rgba(20, 30, 45, 0.65);
+  backdrop-filter: blur(16px);
+  border-radius: 40px;
+  border: 1px solid rgba(255, 180, 71, 0.3);
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+  width: 100%;
+  max-width: 550px;
+  padding: 28px 24px;
+  transition: all 0.3s ease;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #FFE6B3, #FFB347);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.5px;
+}
+
+.sub {
+  color: #a0b3d9;
+  font-size: 12px;
+  margin-top: 8px;
+  opacity: 0.8;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #e2e8f0;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+select, input {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(15, 25, 35, 0.8);
+  border: 1px solid rgba(255, 180, 71, 0.4);
+  border-radius: 28px;
+  font-size: 15px;
+  color: #f1f5f9;
+  font-family: 'Vazir', system-ui, sans-serif;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+select:focus, input:focus {
+  border-color: #FFB347;
+  box-shadow: 0 0 0 3px rgba(255, 180, 71, 0.2);
+  background: rgba(20, 35, 50, 0.9);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(95deg, #FFB347, #FF8C00);
+  border: none;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 16px;
+  color: #0f172a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+  font-family: 'Vazir', system-ui, sans-serif;
+  box-shadow: 0 8px 20px -8px rgba(0,0,0,0.4);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+  box-shadow: 0 4px 12px -4px rgba(0,0,0,0.4);
+}
+
+.result-card {
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 28px;
+  padding: 20px;
+  margin-top: 24px;
+  border: 1px solid rgba(255, 180, 71, 0.35);
+  transition: all 0.3s ease;
+}
+
+.price-main {
+  font-size: 32px;
+  font-weight: 800;
+  color: #FFD966;
+  text-align: center;
+  word-break: break-word;
+  background: rgba(0,0,0,0.25);
+  padding: 16px;
+  border-radius: 24px;
+  margin-bottom: 12px;
+}
+
+.detail-text {
+  font-size: 11px;
+  color: #94a3b8;
+  text-align: center;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 180, 71, 0.2);
+  color: #64748b;
+  font-size: 11px;
+}
+
+.hidden {
+  display: none;
+}
+
+.info-badge {
+  background: rgba(255, 180, 71, 0.12);
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  margin-top: 12px;
+  text-align: center;
+  color: #FFD966;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-card {
+  animation: fadeInUp 0.4s ease-out;
+}
+</style>
+</head>
+<body>
+
+<div class="glass-card">
+  <div class="header">
+    <h1>سکه و طلای ستاری</h1>
+    <div class="sub">محاسبه‌گر هوشمند و حرفه‌ای</div>
+  </div>
+
+  <div class="form-group">
+    <label>نوع کالا</label>
+    <select id="productType">
+      <option value="">انتخاب کنید</option>
+      <option value="new">طلای نو</option>
+      <option value="used">طلای دست دوم</option>
+      <option value="parsian">سکه پارسیان</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>قیمت روز هر گرم طلا (تومان)</label>
+    <input type="number" id="goldPrice" placeholder="مثال: 2650000" value="2650000">
+  </div>
+
+  <div id="dynamicFields"></div>
+
+  <button class="btn-primary" id="calcBtn">محاسبه قیمت نهایی</button>
+
+  <div id="resultArea" class="result-card hidden">
+    <div class="price-main" id="finalPrice">۰ تومان</div>
+    <div class="detail-text" id="detailText"></div>
+  </div>
+
+  <div class="footer">
+    ساخته شده توسط 8008
+  </div>
+</div>
+
+<script>
+const productType = document.getElementById('productType');
+const goldPriceInput = document.getElementById('goldPrice');
+const dynamicFields = document.getElementById('dynamicFields');
+const calcBtn = document.getElementById('calcBtn');
+const resultArea = document.getElementById('resultArea');
+const finalPriceSpan = document.getElementById('finalPrice');
+const detailTextSpan = document.getElementById('detailText');
+
+function formatNumber(n) {
+  if (isNaN(n)) return '0';
+  return Math.floor(n).toLocaleString('fa-IR');
+}
+
+productType.addEventListener('change', function() {
+  const type = this.value;
+  if (type === 'new') {
+    dynamicFields.innerHTML = `
+      <div class="form-group"><label>وزن (گرم)</label><input type="number" id="weight" step="any" placeholder="مثال: 5" value="5"></div>
+      <div class="form-group"><label>اجرت ساخت (درصد)</label><input type="number" id="wage" step="any" placeholder="مثال: 7" value="7"></div>
+      <div class="form-group"><label>مالیات (درصد)</label><input type="number" id="tax" step="any" placeholder="مثال: 9" value="9"></div>
+      <div class="info-badge">سود فروشنده: ۷ درصد (به ارزش پایه اضافه می‌شود)</div>
+    `;
+  } else if (type === 'used') {
+    dynamicFields.innerHTML = `
+      <div class="form-group"><label>وزن (گرم)</label><input type="number" id="weight" step="any" placeholder="مثال: 5" value="5"></div>
+      <div class="info-badge">سود فروشنده: ۷ درصد (به ارزش پایه اضافه می‌شود)</div>
+    `;
+  } else if (type === 'parsian') {
+    dynamicFields.innerHTML = `
+      <div class="form-group"><label>وزن سکه پارسیان (گرم)</label><input type="number" id="weight" step="any" placeholder="مثال: 8.13" value="8.13"></div>
+      <div class="info-badge">فرمول: وزن × 3.5 درصد × قیمت روز (بدون سود فروشنده)</div>
+    `;
+  } else {
+    dynamicFields.innerHTML = '';
+  }
+  resultArea.classList.add('hidden');
+});
+
+calcBtn.addEventListener('click', function() {
+  const type = productType.value;
+  const goldPrice = parseFloat(goldPriceInput.value);
+
+  if (!type) { alert('لطفاً نوع کالا را انتخاب کنید'); return; }
+  if (isNaN(goldPrice) || goldPrice <= 0) { alert('لطفاً قیمت روز معتبر وارد کنید'); return; }
+
+  let finalPrice = 0;
+  let detail = '';
+  const SELLER_PROFIT = 7;
+
+  if (type === 'new') {
+    const weight = parseFloat(document.getElementById('weight')?.value);
+    const wage = parseFloat(document.getElementById('wage')?.value);
+    const tax = parseFloat(document.getElementById('tax')?.value);
+    if (!weight || isNaN(weight) || weight <= 0) { alert('وزن معتبر وارد کنید'); return; }
+    
+    const wagePercent = isNaN(wage) ? 0 : wage;
+    const taxPercent = isNaN(tax) ? 0 : tax;
+    const baseBeforeProfit = weight * goldPrice;
+    const sellerProfit = baseBeforeProfit * SELLER_PROFIT / 100;
+    const baseAfterProfit = baseBeforeProfit + sellerProfit;
+    const wageAmount = baseAfterProfit * wagePercent / 100;
+    const afterWage = baseAfterProfit + wageAmount;
+    const taxAmount = afterWage * taxPercent / 100;
+    finalPrice = afterWage + taxAmount;
+    
+    detail = `ارزش پایه: ${formatNumber(baseBeforeProfit)} تومان\nسود فروشنده (۷ درصد): ${formatNumber(sellerProfit)} تومان\nاجرت ساخت (${wagePercent} درصد): ${formatNumber(wageAmount)} تومان\nمالیات (${taxPercent} درصد): ${formatNumber(taxAmount)} تومان`;
+  } 
+  else if (type === 'used') {
+    const weight = parseFloat(document.getElementById('weight')?.value);
+    if (!weight || isNaN(weight) || weight <= 0) { alert('وزن معتبر وارد کنید'); return; }
+    
+    const baseBeforeProfit = weight * goldPrice;
+    const sellerProfit = baseBeforeProfit * SELLER_PROFIT / 100;
+    finalPrice = baseBeforeProfit + sellerProfit;
+    detail = `ارزش طلا: ${formatNumber(baseBeforeProfit)} تومان\nسود فروشنده (۷ درصد): ${formatNumber(sellerProfit)} تومان\nقیمت نهایی: ${formatNumber(finalPrice)} تومان`;
+  } 
+  else if (type === 'parsian') {
+    const weight = parseFloat(document.getElementById('weight')?.value);
+    if (!weight || isNaN(weight) || weight <= 0) { alert('وزن معتبر وارد کنید'); return; }
+    
+    const percent = 3.5;
+    finalPrice = weight * (percent / 100) * goldPrice;
+    detail = `وزن: ${weight} گرم\nدرصد: ${percent} درصد\nقیمت روز: ${formatNumber(goldPrice)} تومان\nقیمت نهایی: ${formatNumber(finalPrice)} تومان`;
+  }
+
+  finalPriceSpan.innerHTML = formatNumber(finalPrice) + ' تومان';
+  detailTextSpan.innerHTML = detail;
+  resultArea.classList.remove('hidden');
+});
+</script>
+</body>
+</html>
