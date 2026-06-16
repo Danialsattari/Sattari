@@ -22,8 +22,8 @@ label{display:block;margin-bottom:8px;color:#d4c9b8;font-size:13px;font-weight:5
 .price-unit{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#d4c9b8;font-size:13px;font-weight:500;background:rgba(212,201,184,0.1);padding:5px 12px;border-radius:32px;pointer-events:none}
 .price-note{font-size:11px;color:#7a7f89;margin-top:8px;margin-right:8px}
 .price-note a{color:#d4c9b8;text-decoration:none}
-select,input[type="number"]{width:100%;padding:15px 18px;background:#1e2126;border:1.5px solid rgba(212,201,184,0.15);border-radius:42px;font-size:15px;color:#f5f2eb;font-family:'Vazir',sans-serif;font-weight:450;outline:none;transition:all .25s ease}
-select:focus,input[type="number"]:focus{border-color:#d4c9b8;box-shadow:0 0 0 3px rgba(212,201,184,0.15);background:#262a30}
+select,input[type="number"],input[type="text"],input[type="tel"]{width:100%;padding:15px 18px;background:#1e2126;border:1.5px solid rgba(212,201,184,0.15);border-radius:42px;font-size:15px;color:#f5f2eb;font-family:'Vazir',sans-serif;font-weight:450;outline:none;transition:all .25s ease}
+select:focus,input:focus{border-color:#d4c9b8;box-shadow:0 0 0 3px rgba(212,201,184,0.15);background:#262a30}
 select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23d4c9b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:left 18px center}
 .btn-primary{width:100%;padding:16px;background:linear-gradient(105deg,#d4c9b8,#c4b9a8);border:none;border-radius:48px;font-weight:700;font-size:16px;color:#1a1c1e;cursor:pointer;transition:all .2s ease;margin-top:12px;font-family:'Vazir',sans-serif;box-shadow:0 6px 14px rgba(0,0,0,0.2)}
 .btn-primary:active{transform:scale(.97)}
@@ -40,6 +40,27 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml;u
 <body>
 <div class="glass-card">
   <div class="header"><h1>سکه و طلای ستاری</h1><div class="sub">محاسبه‌گر هوشمند طلا و سکه</div></div>
+
+  <!-- اطلاعات فروشنده و خریدار -->
+  <div class="form-group">
+    <label>🆔 شناسه فروشنده</label>
+    <input type="text" id="sellerId" placeholder="مثال: 1001">
+  </div>
+
+  <div class="form-group">
+    <label>👤 نام خریدار</label>
+    <input type="text" id="buyerName" placeholder="مثال: علی محمدی">
+  </div>
+
+  <div class="form-group">
+    <label>📞 شماره تلفن خریدار</label>
+    <input type="tel" id="buyerPhone" placeholder="مثال: 09123456789">
+  </div>
+
+  <div class="form-group">
+    <label>🏷️ نام کالا</label>
+    <input type="text" id="productName" placeholder="مثال: انگشتر طلا">
+  </div>
 
   <div class="form-group">
     <label>نوع کالا</label>
@@ -85,6 +106,12 @@ const calcBtn = document.getElementById('calcBtn');
 const resultArea = document.getElementById('resultArea');
 const finalPriceSpan = document.getElementById('finalPrice');
 const sendToTelegramBtn = document.getElementById('sendToTelegramBtn');
+
+// المان‌های جدید
+const sellerIdInput = document.getElementById('sellerId');
+const buyerNameInput = document.getElementById('buyerName');
+const buyerPhoneInput = document.getElementById('buyerPhone');
+const productNameInput = document.getElementById('productName');
 
 let lastCalculation = { finalPrice: 0, type: '', weight: 0, goldPrice: 0, sellerProfit: 0, wage: 0, tax: 0 };
 
@@ -204,14 +231,27 @@ sendToTelegramBtn.addEventListener('click', async function() {
     return;
   }
 
+  // گرفتن اطلاعات اضافی
+  const sellerId = sellerIdInput.value.trim() || 'ثبت نشده';
+  const buyerName = buyerNameInput.value.trim() || 'ثبت نشده';
+  const buyerPhone = buyerPhoneInput.value.trim() || 'ثبت نشده';
+  const productName = productNameInput.value.trim() || 'ثبت نشده';
+
   const typeMap = { 'new': 'طلای نو', 'used': 'طلای دست دوم', 'parsian': 'سکه پارسیان' };
-  let message = `🪙 فروش جدید - سکه و طلای ستاری 🪙\n\n`;
+  
+  let message = `🪙 *سفارش جدید - سکه و طلای ستاری* 🪙\n\n`;
   message += `📅 تاریخ: ${new Date().toLocaleDateString('fa-IR')}\n`;
   message += `⏰ زمان: ${new Date().toLocaleTimeString('fa-IR')}\n\n`;
   message += `━━━━━━━━━━━━━━━━━━━━\n`;
-  message += `🏷️ نوع کالا: ${typeMap[lastCalculation.type] || lastCalculation.type}\n`;
+  message += `🆔 شناسه فروشنده: ${sellerId}\n`;
+  message += `👤 نام خریدار: ${buyerName}\n`;
+  message += `📞 تلفن خریدار: ${buyerPhone}\n`;
+  message += `🏷️ نام کالا: ${productName}\n`;
+  message += `━━━━━━━━━━━━━━━━━━━━\n`;
+  message += `📦 نوع کالا: ${typeMap[lastCalculation.type] || lastCalculation.type}\n`;
   message += `⚖️ وزن: ${lastCalculation.weight} گرم\n`;
   message += `💰 قیمت روز هر گرم: ${formatNumber(lastCalculation.goldPrice)} تومان\n`;
+  
   if (lastCalculation.type === 'new') {
     message += `📈 سود فروشنده: ${lastCalculation.sellerProfit}%\n`;
     message += `🔨 اجرت ساخت: ${lastCalculation.wage}%\n`;
@@ -219,8 +259,9 @@ sendToTelegramBtn.addEventListener('click', async function() {
   } else {
     message += `📈 سود فروشنده: ${lastCalculation.sellerProfit}%\n`;
   }
+  
   message += `━━━━━━━━━━━━━━━━━━━━\n`;
-  message += `💰 قیمت نهایی: ${formatNumber(lastCalculation.finalPrice)} تومان\n`;
+  message += `💰 *قیمت نهایی: ${formatNumber(lastCalculation.finalPrice)} تومان*\n`;
   message += `━━━━━━━━━━━━━━━━━━━━\n\n`;
   message += `🆔 ثبت شده توسط اپلیکیشن سکه و طلای ستاری`;
 
@@ -230,13 +271,10 @@ sendToTelegramBtn.addEventListener('click', async function() {
   btn.disabled = true;
 
   try {
-    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' })
-    });
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}&parse_mode=Markdown`;
+    const response = await fetch(url);
     const result = await response.json();
+    
     if (result.ok) {
       alert('✅ سفارش با موفقیت به تلگرام ارسال شد!');
       btn.innerHTML = '✓ ارسال شد';
@@ -246,6 +284,7 @@ sendToTelegramBtn.addEventListener('click', async function() {
     }
   } catch (error) {
     alert('❌ خطا در ارسال به تلگرام. لطفاً دوباره تلاش کنید.');
+    console.error('خطا:', error);
     btn.innerHTML = originalText;
     btn.disabled = false;
   }
