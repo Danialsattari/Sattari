@@ -6,305 +6,40 @@
 <title>سکه و طلای ستاری</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  overflow: hidden;
-}
-
-body {
-  background: linear-gradient(145deg, #ebe6dc 0%, #f5f2eb 100%);
-  font-family: 'Vazir', 'Tahoma', sans-serif;
-  font-weight: 400;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 16px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.glass-card {
-  background: rgba(35, 37, 42, 0.92);
-  backdrop-filter: blur(8px);
-  border-radius: 56px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 35px 60px -20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  width: 100%;
-  max-width: 520px;
-  margin: auto;
-  padding: 36px 28px 40px;
-  transition: all 0.3s ease;
-  animation: fadeInScale 0.5s ease-out;
-}
-
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-h1 {
-  font-size: 32px;
-  font-weight: 800;
-  background: linear-gradient(135deg, #f5f2eb, #d4c9b8);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  letter-spacing: -0.5px;
-  margin-bottom: 6px;
-}
-
-.sub {
-  color: #9ca3af;
-  font-size: 13px;
-  letter-spacing: 0.3px;
-}
-
-.form-group {
-  margin-bottom: 24px;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  color: #d4c9b8;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-  transition: color 0.2s;
-}
-
-.price-input-wrapper {
-  position: relative;
-}
-
-.price-input-wrapper input {
-  width: 100%;
-  padding: 15px 18px;
-  padding-left: 70px;
-  background: #1e2126;
-  border: 1.5px solid rgba(212, 201, 184, 0.15);
-  border-radius: 42px;
-  font-size: 15px;
-  color: #f5f2eb;
-  font-family: 'Vazir', sans-serif;
-  font-weight: 450;
-  outline: none;
-  transition: all 0.25s ease;
-  direction: ltr;
-  text-align: right;
-}
-
-.price-input-wrapper input:focus {
-  border-color: #d4c9b8;
-  box-shadow: 0 0 0 3px rgba(212, 201, 184, 0.15);
-  background: #262a30;
-}
-
-.price-unit {
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #d4c9b8;
-  font-size: 13px;
-  font-weight: 500;
-  background: rgba(212, 201, 184, 0.1);
-  padding: 5px 12px;
-  border-radius: 32px;
-  pointer-events: none;
-  backdrop-filter: blur(4px);
-}
-
-.price-note {
-  font-size: 11px;
-  color: #7a7f89;
-  margin-top: 8px;
-  margin-right: 8px;
-}
-
-.price-note a {
-  color: #d4c9b8;
-  text-decoration: none;
-  transition: opacity 0.2s;
-}
-
-.price-note a:active {
-  opacity: 0.7;
-}
-
-select, input[type="number"] {
-  width: 100%;
-  padding: 15px 18px;
-  background: #1e2126;
-  border: 1.5px solid rgba(212, 201, 184, 0.15);
-  border-radius: 42px;
-  font-size: 15px;
-  color: #f5f2eb;
-  font-family: 'Vazir', sans-serif;
-  font-weight: 450;
-  outline: none;
-  transition: all 0.25s ease;
-}
-
-select:focus, input[type="number"]:focus {
-  border-color: #d4c9b8;
-  box-shadow: 0 0 0 3px rgba(212, 201, 184, 0.15);
-  background: #262a30;
-}
-
-select {
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23d4c9b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
-  background-repeat: no-repeat;
-  background-position: left 18px center;
-}
-
-.btn-primary {
-  width: 100%;
-  padding: 16px;
-  background: linear-gradient(105deg, #d4c9b8, #c4b9a8);
-  border: none;
-  border-radius: 48px;
-  font-weight: 700;
-  font-size: 16px;
-  color: #1a1c1e;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-  margin-top: 12px;
-  font-family: 'Vazir', sans-serif;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-}
-
-.btn-primary:active {
-  transform: scale(0.97);
-  background: linear-gradient(105deg, #c4b9a8, #b4a998);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-}
-
-.result-card {
-  background: rgba(30, 33, 38, 0.8);
-  backdrop-filter: blur(8px);
-  border-radius: 40px;
-  padding: 28px;
-  margin-top: 28px;
-  border: 1px solid rgba(212, 201, 184, 0.12);
-  transition: all 0.3s ease;
-  animation: fadeSlideUp 0.4s ease-out;
-}
-
-@keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.price-main {
-  font-size: 42px;
-  font-weight: 800;
-  color: #f5f2eb;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.25);
-  padding: 24px;
-  border-radius: 38px;
-  margin-bottom: 0;
-  letter-spacing: -1px;
-  backdrop-filter: blur(4px);
-  transition: transform 0.2s;
-}
-
-.price-main:active {
-  transform: scale(0.98);
-}
-
-.footer {
-  text-align: center;
-  margin-top: 32px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(212, 201, 184, 0.08);
-  color: #7a7f89;
-  font-size: 11px;
-  font-weight: 450;
-  letter-spacing: 0.3px;
-}
-
-.hidden {
-  display: none;
-}
-
-.info-badge {
-  background: rgba(212, 201, 184, 0.05);
-  padding: 12px;
-  border-radius: 32px;
-  font-size: 12px;
-  margin-top: 18px;
-  text-align: center;
-  color: #c4b9a8;
-  font-weight: 450;
-}
-
-@media (max-width: 480px) {
-  .glass-card {
-    padding: 24px 20px 30px;
-    border-radius: 44px;
-  }
-  h1 {
-    font-size: 26px;
-  }
-  .price-main {
-    font-size: 32px;
-    padding: 18px;
-  }
-  .btn-primary {
-    padding: 14px;
-  }
-  select, input, .price-input-wrapper input {
-    padding: 13px 16px;
-    font-size: 14px;
-  }
-  .price-unit {
-    left: 12px;
-    padding: 4px 10px;
-  }
-}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;position:fixed;overflow:hidden}
+body{background:linear-gradient(145deg,#ebe6dc 0%,#f5f2eb 100%);font-family:'Vazir','Tahoma',sans-serif;font-weight:400;display:flex;justify-content:center;align-items:center;padding:16px;position:fixed;top:0;left:0;right:0;bottom:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.glass-card{background:rgba(35,37,42,0.92);backdrop-filter:blur(8px);border-radius:56px;border:1px solid rgba(255,255,255,0.06);box-shadow:0 35px 60px -20px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.05);width:100%;max-width:520px;margin:auto;padding:36px 28px 40px;transition:all .3s ease;animation:fadeInScale .5s ease-out}
+@keyframes fadeInScale{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+.header{text-align:center;margin-bottom:32px}
+h1{font-size:32px;font-weight:800;background:linear-gradient(135deg,#f5f2eb,#d4c9b8);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.5px;margin-bottom:6px}
+.sub{color:#9ca3af;font-size:13px;letter-spacing:.3px}
+.form-group{margin-bottom:24px}
+label{display:block;margin-bottom:8px;color:#d4c9b8;font-size:13px;font-weight:500;letter-spacing:.3px}
+.price-input-wrapper{position:relative}
+.price-input-wrapper input{width:100%;padding:15px 18px;padding-left:70px;background:#1e2126;border:1.5px solid rgba(212,201,184,0.15);border-radius:42px;font-size:15px;color:#f5f2eb;font-family:'Vazir',sans-serif;font-weight:450;outline:none;transition:all .25s ease;direction:ltr;text-align:right}
+.price-input-wrapper input:focus{border-color:#d4c9b8;box-shadow:0 0 0 3px rgba(212,201,184,0.15);background:#262a30}
+.price-unit{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#d4c9b8;font-size:13px;font-weight:500;background:rgba(212,201,184,0.1);padding:5px 12px;border-radius:32px;pointer-events:none}
+.price-note{font-size:11px;color:#7a7f89;margin-top:8px;margin-right:8px}
+.price-note a{color:#d4c9b8;text-decoration:none}
+select,input[type="number"]{width:100%;padding:15px 18px;background:#1e2126;border:1.5px solid rgba(212,201,184,0.15);border-radius:42px;font-size:15px;color:#f5f2eb;font-family:'Vazir',sans-serif;font-weight:450;outline:none;transition:all .25s ease}
+select:focus,input[type="number"]:focus{border-color:#d4c9b8;box-shadow:0 0 0 3px rgba(212,201,184,0.15);background:#262a30}
+select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23d4c9b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:left 18px center}
+.btn-primary{width:100%;padding:16px;background:linear-gradient(105deg,#d4c9b8,#c4b9a8);border:none;border-radius:48px;font-weight:700;font-size:16px;color:#1a1c1e;cursor:pointer;transition:all .2s ease;margin-top:12px;font-family:'Vazir',sans-serif;box-shadow:0 6px 14px rgba(0,0,0,0.2)}
+.btn-primary:active{transform:scale(.97)}
+.btn-secondary{width:100%;padding:14px;background:transparent;border:1.5px solid #d4c9b8;border-radius:48px;font-weight:600;font-size:15px;color:#d4c9b8;cursor:pointer;transition:all .2s ease;margin-top:12px;font-family:'Vazir',sans-serif}
+.btn-secondary:active{transform:scale(.97);background:rgba(212,201,184,0.1)}
+.result-card{background:rgba(30,33,38,0.8);backdrop-filter:blur(8px);border-radius:40px;padding:28px;margin-top:28px;border:1px solid rgba(212,201,184,0.12);transition:all .3s ease;animation:fadeSlideUp .4s ease-out}
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.price-main{font-size:42px;font-weight:800;color:#f5f2eb;text-align:center;background:rgba(0,0,0,0.25);padding:24px;border-radius:38px;margin-bottom:16px;letter-spacing:-1px}
+.footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid rgba(212,201,184,0.08);color:#7a7f89;font-size:11px}
+.hidden{display:none}
+@media (max-width:480px){.glass-card{padding:24px 20px 30px;border-radius:44px}h1{font-size:26px}.price-main{font-size:32px;padding:18px}.btn-primary,.btn-secondary{padding:12px}select,input,.price-input-wrapper input{padding:13px 16px;font-size:14px}.price-unit{left:12px;padding:4px 10px}}
 </style>
 </head>
 <body>
 <div class="glass-card">
-  <div class="header">
-    <h1>سکه و طلای ستاری</h1>
-    <div class="sub">محاسبه‌گر هوشمند طلا و سکه</div>
-  </div>
+  <div class="header"><h1>سکه و طلای ستاری</h1><div class="sub">محاسبه‌گر هوشمند طلا و سکه</div></div>
 
   <div class="form-group">
     <label>نوع کالا</label>
@@ -322,27 +57,36 @@ select {
       <input type="text" id="goldPrice" inputmode="numeric" placeholder="مثال: 16,000,000" value="">
       <span class="price-unit">تومان</span>
     </div>
-    <div class="price-note">
-      📌 در صورت نیاز به دریافت قیمت روز، از لینک زیر استفاده کنید:<br>
-      <a href="https://tabangohar.com" target="_blank" rel="noopener noreferrer">tabangohar.com</a>
-    </div>
+    <div class="price-note">📌 در صورت نیاز به دریافت قیمت روز، از لینک زیر استفاده کنید:<br><a href="https://tabangohar.com" target="_blank">tabangohar.com</a></div>
   </div>
 
   <div id="dynamicFields"></div>
+  
   <button class="btn-primary" id="calcBtn">محاسبه قیمت نهایی</button>
+  
   <div id="resultArea" class="result-card hidden">
     <div class="price-main" id="finalPrice">۰ تومان</div>
+    <button class="btn-secondary" id="sendToTelegramBtn">📤 ثبت سفارش و ارسال به تلگرام</button>
   </div>
+  
   <div class="footer">طراحی شده توسط دانیال ستاری | قدرت گرفته از ۸۰۰۸</div>
 </div>
 
 <script>
+// ========== تنظیمات ربات تلگرام ==========
+const BOT_TOKEN = "8856587960:AAHWmOaNPLR54ikgpo0T-N4n2r4lN7K-hVY";
+const CHAT_ID = "7902314276";
+// =========================================
+
 const productType = document.getElementById('productType');
 const goldPriceInput = document.getElementById('goldPrice');
 const dynamicFields = document.getElementById('dynamicFields');
 const calcBtn = document.getElementById('calcBtn');
 const resultArea = document.getElementById('resultArea');
 const finalPriceSpan = document.getElementById('finalPrice');
+const sendToTelegramBtn = document.getElementById('sendToTelegramBtn');
+
+let lastCalculation = { finalPrice: 0, type: '', weight: 0, goldPrice: 0, sellerProfit: 0, wage: 0, tax: 0 };
 
 function toEnglishNumbers(str) {
   const persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
@@ -424,10 +168,7 @@ calcBtn.addEventListener('click', function() {
   let tax = parseFloat(document.getElementById('tax')?.value) || 0;
 
   if (!type) { alert('لطفاً نوع کالا را انتخاب کنید'); return; }
-  if (isNaN(goldPrice) || goldPrice <= 0) { 
-    alert('لطفاً قیمت روز معتبر وارد کنید');
-    return; 
-  }
+  if (isNaN(goldPrice) || goldPrice <= 0) { alert('لطفاً قیمت روز معتبر وارد کنید'); return; }
   if (isNaN(weight) || weight <= 0) { alert('وزن معتبر وارد کنید'); return; }
 
   let finalPrice = 0;
@@ -436,19 +177,78 @@ calcBtn.addEventListener('click', function() {
     let multiplier = 1 + (totalPercent / 100);
     let finalWeight = weight * multiplier;
     finalPrice = finalWeight * goldPrice;
-  } else if (type === 'used') {
-    let multiplier = 1 + (sellerProfit / 100);
-    let finalWeight = weight * multiplier;
-    finalPrice = finalWeight * goldPrice;
-  } else if (type === 'parsian') {
-    // فرمول صحیح سکه پارسیان: (وزن + سود درصد) × قیمت روز (بدون ۳.۵%)
+  } else if (type === 'used' || type === 'parsian') {
     let multiplier = 1 + (sellerProfit / 100);
     let finalWeight = weight * multiplier;
     finalPrice = finalWeight * goldPrice;
   }
 
+  lastCalculation = {
+    finalPrice: finalPrice,
+    type: type,
+    typeName: productType.options[productType.selectedIndex]?.text || type,
+    weight: weight,
+    goldPrice: goldPrice,
+    sellerProfit: sellerProfit,
+    wage: wage,
+    tax: tax
+  };
+
   finalPriceSpan.innerHTML = formatNumber(finalPrice) + ' تومان';
   resultArea.classList.remove('hidden');
+});
+
+sendToTelegramBtn.addEventListener('click', async function() {
+  if (lastCalculation.finalPrice === 0) {
+    alert('ابتدا قیمت نهایی را محاسبه کنید');
+    return;
+  }
+
+  const typeMap = { 'new': 'طلای نو', 'used': 'طلای دست دوم', 'parsian': 'سکه پارسیان' };
+  let message = `🪙 فروش جدید - سکه و طلای ستاری 🪙\n\n`;
+  message += `📅 تاریخ: ${new Date().toLocaleDateString('fa-IR')}\n`;
+  message += `⏰ زمان: ${new Date().toLocaleTimeString('fa-IR')}\n\n`;
+  message += `━━━━━━━━━━━━━━━━━━━━\n`;
+  message += `🏷️ نوع کالا: ${typeMap[lastCalculation.type] || lastCalculation.type}\n`;
+  message += `⚖️ وزن: ${lastCalculation.weight} گرم\n`;
+  message += `💰 قیمت روز هر گرم: ${formatNumber(lastCalculation.goldPrice)} تومان\n`;
+  if (lastCalculation.type === 'new') {
+    message += `📈 سود فروشنده: ${lastCalculation.sellerProfit}%\n`;
+    message += `🔨 اجرت ساخت: ${lastCalculation.wage}%\n`;
+    message += `📋 مالیات: ${lastCalculation.tax}%\n`;
+  } else {
+    message += `📈 سود فروشنده: ${lastCalculation.sellerProfit}%\n`;
+  }
+  message += `━━━━━━━━━━━━━━━━━━━━\n`;
+  message += `💰 قیمت نهایی: ${formatNumber(lastCalculation.finalPrice)} تومان\n`;
+  message += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+  message += `🆔 ثبت شده توسط اپلیکیشن سکه و طلای ستاری`;
+
+  const btn = sendToTelegramBtn;
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '⏳ در حال ارسال...';
+  btn.disabled = true;
+
+  try {
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' })
+    });
+    const result = await response.json();
+    if (result.ok) {
+      alert('✅ سفارش با موفقیت به تلگرام ارسال شد!');
+      btn.innerHTML = '✓ ارسال شد';
+      setTimeout(() => { btn.innerHTML = originalText; btn.disabled = false; }, 2000);
+    } else {
+      throw new Error(result.description || 'خطا در ارسال');
+    }
+  } catch (error) {
+    alert('❌ خطا در ارسال به تلگرام. لطفاً دوباره تلاش کنید.');
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+  }
 });
 </script>
 </body>
