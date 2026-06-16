@@ -8,57 +8,64 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{width:100%;height:100%;position:fixed;overflow:hidden}
-body{background:#F5EFE6;font-family:'Vazir','Tahoma',sans-serif;font-weight:400;display:flex;justify-content:center;align-items:center;padding:16px;position:fixed;top:0;left:0;right:0;bottom:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
-.glass-card{background:#E8DFCA;border-radius:56px;border:1px solid rgba(255,255,255,0.3);box-shadow:0 35px 60px -20px rgba(0,0,0,0.15),inset 0 1px 0 rgba(255,255,255,0.5);width:100%;max-width:520px;margin:auto;padding:36px 28px 40px;transition:all .3s ease;animation:fadeInScale .5s ease-out}
-@keyframes fadeInScale{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
-.header{text-align:center;margin-bottom:32px}
-h1{font-size:32px;font-weight:800;color:#6D94C5;letter-spacing:-.5px;margin-bottom:6px;text-shadow:0 1px 2px rgba(255,255,255,0.3)}
-.sub{color:#5a7a9e;font-size:13px;letter-spacing:.3px}
-.form-group{margin-bottom:24px}
-label{display:block;margin-bottom:8px;color:#5a7a9e;font-size:13px;font-weight:500;letter-spacing:.3px}
+body{background:#EAF2F2;font-family:'Vazir','Tahoma',sans-serif;font-weight:400;display:flex;justify-content:center;align-items:center;padding:16px;position:fixed;top:0;left:0;right:0;bottom:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
+body::before{content:'';position:absolute;width:100%;height:100%;background:radial-gradient(ellipse at 30% 20%, rgba(255,155,81,0.06) 0%, transparent 60%),radial-gradient(ellipse at 70% 80%, rgba(37,52,63,0.03) 0%, transparent 50%);pointer-events:none}
+.glass-card{background:#BFC9D1;border-radius:48px;border:1px solid rgba(255,255,255,0.25);box-shadow:0 20px 60px -16px rgba(37,52,63,0.12);width:100%;max-width:480px;margin:auto;padding:32px 24px 36px;transition:all .3s ease;animation:fadeInScale .5s ease}
+@keyframes fadeInScale{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:scale(1)}}
+.header{text-align:center;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid rgba(37,52,63,0.06)}
+h1{font-size:26px;font-weight:700;color:#25343F;letter-spacing:-.3px}
+.sub{color:#5a6a7a;font-size:12px;letter-spacing:.2px;margin-top:4px}
+.form-group{margin-bottom:16px}
+label{display:block;margin-bottom:5px;color:#25343F;font-size:11px;font-weight:600;letter-spacing:.3px;opacity:.6}
 .price-input-wrapper{position:relative}
-.price-input-wrapper input{width:100%;padding:15px 18px;padding-left:70px;background:rgba(255,255,255,0.7);border:1.5px solid rgba(109,148,197,0.2);border-radius:42px;font-size:15px;color:#3a5a7e;font-family:'Vazir',sans-serif;font-weight:450;outline:none;transition:all .25s ease;direction:ltr;text-align:right}
-.price-input-wrapper input:focus{border-color:#6D94C5;box-shadow:0 0 0 3px rgba(109,148,197,0.15);background:#ffffff}
-.price-unit{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#6D94C5;font-size:13px;font-weight:500;background:rgba(109,148,197,0.1);padding:5px 12px;border-radius:32px;pointer-events:none}
-.price-note{font-size:11px;color:#8a9aae;margin-top:8px;margin-right:8px}
-.price-note a{color:#6D94C5;text-decoration:none;font-weight:500}
-select,input[type="number"],input[type="text"],input[type="tel"]{width:100%;padding:15px 18px;background:rgba(255,255,255,0.7);border:1.5px solid rgba(109,148,197,0.2);border-radius:42px;font-size:15px;color:#3a5a7e;font-family:'Vazir',sans-serif;font-weight:450;outline:none;transition:all .25s ease}
-select:focus,input:focus{border-color:#6D94C5;box-shadow:0 0 0 3px rgba(109,148,197,0.15);background:#ffffff}
-select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236D94C5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:left 18px center}
-.btn-primary{width:100%;padding:16px;background:#6D94C5;border:none;border-radius:48px;font-weight:700;font-size:16px;color:#ffffff;cursor:pointer;transition:all .2s ease;margin-top:12px;font-family:'Vazir',sans-serif;box-shadow:0 6px 14px rgba(109,148,197,0.25)}
-.btn-primary:active{transform:scale(.97);background:#5a7a9e}
-.btn-secondary{width:100%;padding:14px;background:rgba(255,255,255,0.5);border:1.5px solid #CBDCEB;border-radius:48px;font-weight:600;font-size:15px;color:#6D94C5;cursor:pointer;transition:all .2s ease;margin-top:12px;font-family:'Vazir',sans-serif;backdrop-filter:blur(4px)}
-.btn-secondary:active{transform:scale(.97);background:rgba(255,255,255,0.7)}
-.result-card{background:rgba(255,255,255,0.5);backdrop-filter:blur(8px);border-radius:40px;padding:28px;margin-top:28px;border:1px solid rgba(255,255,255,0.4);transition:all .3s ease;animation:fadeSlideUp .4s ease-out}
+.price-input-wrapper input{width:100%;padding:14px 18px;padding-left:70px;background:rgba(255,255,255,0.7);border:1px solid rgba(37,52,63,0.06);border-radius:40px;font-size:14px;color:#25343F;font-family:'Vazir',sans-serif;font-weight:400;outline:none;transition:all .2s ease;direction:ltr;text-align:right}
+.price-input-wrapper input:focus{border-color:#FF9B51;box-shadow:0 0 0 3px rgba(255,155,81,0.08);background:#fff}
+.price-unit{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#25343F;font-size:11px;font-weight:500;background:rgba(37,52,63,0.05);padding:3px 12px;border-radius:30px;pointer-events:none}
+select,input[type="number"],input[type="text"],input[type="tel"]{width:100%;padding:14px 18px;background:rgba(255,255,255,0.7);border:1px solid rgba(37,52,63,0.06);border-radius:40px;font-size:14px;color:#25343F;font-family:'Vazir',sans-serif;font-weight:400;outline:none;transition:all .2s ease}
+select:focus,input:focus{border-color:#FF9B51;box-shadow:0 0 0 3px rgba(255,155,81,0.08);background:#fff}
+select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2325343F' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:left 16px center}
+.btn-primary{width:100%;padding:16px;background:#25343F;border:none;border-radius:44px;font-weight:600;font-size:15px;color:#fff;cursor:pointer;transition:all .2s ease;margin-top:6px;font-family:'Vazir',sans-serif;box-shadow:0 6px 20px rgba(37,52,63,0.15)}
+.btn-primary:active{transform:scale(.98);box-shadow:0 3px 10px rgba(37,52,63,0.1)}
+.btn-secondary{width:100%;padding:13px;background:rgba(255,255,255,0.5);border:1px solid rgba(37,52,63,0.08);border-radius:44px;font-weight:500;font-size:13px;color:#25343F;cursor:pointer;transition:all .2s ease;margin-top:10px;font-family:'Vazir',sans-serif}
+.btn-secondary:active{transform:scale(.98);background:rgba(255,255,255,0.8)}
+.result-card{background:rgba(255,255,255,0.6);backdrop-filter:blur(8px);border-radius:36px;padding:22px;margin-top:22px;border:1px solid rgba(255,255,255,0.4);animation:fadeSlideUp .4s ease}
 @keyframes fadeSlideUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.price-main{font-size:42px;font-weight:800;color:#6D94C5;text-align:center;background:rgba(255,255,255,0.4);padding:24px;border-radius:38px;margin-bottom:16px;letter-spacing:-1px;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.3)}
-.footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid rgba(109,148,197,0.15);color:#8a9aae;font-size:11px}
+.price-main{font-size:36px;font-weight:700;color:#25343F;text-align:center;background:rgba(255,255,255,0.4);padding:20px;border-radius:32px;margin-bottom:0;letter-spacing:-.5px}
+.price-main .currency{font-size:15px;color:#5a6a7a;font-weight:400;margin-right:3px}
+.price-main .accent{color:#FF9B51}
+.footer{text-align:center;margin-top:28px;padding-top:16px;border-top:1px solid rgba(37,52,63,0.05);color:#6a7a8a;font-size:10px;display:flex;justify-content:center;align-items:center;gap:10px}
+.footer .badge{background:#FF9B51;padding:2px 12px;border-radius:30px;font-size:9px;color:#fff;font-weight:600}
+.footer .divider{width:1px;height:12px;background:rgba(37,52,63,0.08)}
 .hidden{display:none}
-@media (max-width:480px){.glass-card{padding:24px 20px 30px;border-radius:44px}h1{font-size:26px}.price-main{font-size:32px;padding:18px}.btn-primary,.btn-secondary{padding:12px}select,input,.price-input-wrapper input{padding:13px 16px;font-size:14px}.price-unit{left:12px;padding:4px 10px}}
+.price-note{font-size:10px;color:#6a7a8a;margin-top:6px;margin-right:6px}
+.price-note a{color:#FF9B51;text-decoration:none;font-weight:500}
+@media (max-width:480px){.glass-card{padding:24px 18px 28px;border-radius:40px}h1{font-size:22px}.price-main{font-size:30px;padding:16px}.price-main .currency{font-size:13px}.btn-primary,.btn-secondary{padding:13px;font-size:13px}select,input,.price-input-wrapper input{padding:12px 16px;font-size:13px}.price-unit{left:12px;padding:2px 10px;font-size:10px}}
 </style>
 </head>
 <body>
 <div class="glass-card">
-  <div class="header"><h1>حله گلد</h1><div class="sub">محاسبه‌گر هوشمند طلا و سکه</div></div>
+  <div class="header">
+    <h1>حله گلد</h1>
+    <div class="sub">محاسبه‌گر هوشمند طلا و سکه</div>
+  </div>
 
-  <!-- اطلاعات فروشنده و خریدار -->
   <div class="form-group">
-    <label>🆔 شناسه فروشنده</label>
+    <label>شناسه فروشنده</label>
     <input type="text" id="sellerId" placeholder="مثال: 1001">
   </div>
 
   <div class="form-group">
-    <label>👤 نام خریدار</label>
+    <label>نام خریدار</label>
     <input type="text" id="buyerName" placeholder="مثال: علی محمدی">
   </div>
 
   <div class="form-group">
-    <label>📞 شماره تلفن خریدار</label>
+    <label>شماره تلفن خریدار</label>
     <input type="tel" id="buyerPhone" placeholder="مثال: 09123456789">
   </div>
 
   <div class="form-group">
-    <label>🏷️ نام کالا</label>
+    <label>نام کالا</label>
     <input type="text" id="productName" placeholder="مثال: انگشتر طلا">
   </div>
 
@@ -73,12 +80,17 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml;u
   </div>
 
   <div class="form-group">
+    <label>عیار</label>
+    <input type="number" id="karat" step="any" value="750" placeholder="مثال: 750">
+  </div>
+
+  <div class="form-group">
     <label>قیمت روز هر گرم طلا (تومان)</label>
     <div class="price-input-wrapper">
       <input type="text" id="goldPrice" inputmode="numeric" placeholder="مثال: 16,000,000" value="">
       <span class="price-unit">تومان</span>
     </div>
-    <div class="price-note">📌 در صورت نیاز به دریافت قیمت روز، از لینک زیر استفاده کنید:<br><a href="https://tabangohar.com" target="_blank">tabangohar.com</a></div>
+    <div class="price-note">در صورت نیاز به دریافت قیمت روز، از لینک زیر استفاده کنید:<br><a href="https://tabangohar.com" target="_blank">tabangohar.com</a></div>
   </div>
 
   <div id="dynamicFields"></div>
@@ -86,34 +98,36 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml;u
   <button class="btn-primary" id="calcBtn">محاسبه قیمت نهایی</button>
   
   <div id="resultArea" class="result-card hidden">
-    <div class="price-main" id="finalPrice">۰ تومان</div>
-    <button class="btn-secondary" id="sendToTelegramBtn">📤 ثبت سفارش و ارسال به تلگرام</button>
+    <div class="price-main" id="finalPrice">۰ <span class="currency">تومان</span></div>
+    <button class="btn-secondary" id="sendToTelegramBtn">ثبت سفارش در <span class="accent">تلگرام</span></button>
   </div>
   
-  <div class="footer">طراحی شده توسط دانیال ستاری | قدرت گرفته از ۸۰۰۸</div>
+  <div class="footer">
+    <span>طراحی شده توسط دانیال ستاری</span>
+    <span class="divider"></span>
+    <span class="badge">۸۰۰۸</span>
+  </div>
 </div>
 
 <script>
-// ========== تنظیمات ربات تلگرام ==========
 const BOT_TOKEN = "8856587960:AAHWmOaNPLR54ikgpo0T-N4n2r4lN7K-hVY";
 const CHAT_ID = "7902314276";
-// =========================================
 
 const productType = document.getElementById('productType');
 const goldPriceInput = document.getElementById('goldPrice');
+const karatInput = document.getElementById('karat');
 const dynamicFields = document.getElementById('dynamicFields');
 const calcBtn = document.getElementById('calcBtn');
 const resultArea = document.getElementById('resultArea');
 const finalPriceSpan = document.getElementById('finalPrice');
 const sendToTelegramBtn = document.getElementById('sendToTelegramBtn');
 
-// المان‌های جدید
 const sellerIdInput = document.getElementById('sellerId');
 const buyerNameInput = document.getElementById('buyerName');
 const buyerPhoneInput = document.getElementById('buyerPhone');
 const productNameInput = document.getElementById('productName');
 
-let lastCalculation = { finalPrice: 0, type: '', weight: 0, goldPrice: 0, sellerProfit: 0, wage: 0, tax: 0 };
+let lastCalculation = { finalPrice: 0, type: '', weight: 0, goldPrice: 0, sellerProfit: 0, wage: 0, tax: 0, karat: 750 };
 
 function toEnglishNumbers(str) {
   const persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
@@ -193,6 +207,7 @@ calcBtn.addEventListener('click', function() {
   let sellerProfit = parseFloat(document.getElementById('sellerProfit')?.value) || 0;
   let wage = parseFloat(document.getElementById('wage')?.value) || 0;
   let tax = parseFloat(document.getElementById('tax')?.value) || 0;
+  let karat = parseFloat(karatInput.value) || 750;
 
   if (!type) { alert('لطفاً نوع کالا را انتخاب کنید'); return; }
   if (isNaN(goldPrice) || goldPrice <= 0) { alert('لطفاً قیمت روز معتبر وارد کنید'); return; }
@@ -218,10 +233,11 @@ calcBtn.addEventListener('click', function() {
     goldPrice: goldPrice,
     sellerProfit: sellerProfit,
     wage: wage,
-    tax: tax
+    tax: tax,
+    karat: karat
   };
 
-  finalPriceSpan.innerHTML = formatNumber(finalPrice) + ' تومان';
+  finalPriceSpan.innerHTML = formatNumber(finalPrice) + ' <span class="currency">تومان</span>';
   resultArea.classList.remove('hidden');
 });
 
@@ -231,7 +247,6 @@ sendToTelegramBtn.addEventListener('click', async function() {
     return;
   }
 
-  // گرفتن اطلاعات اضافی
   const sellerId = sellerIdInput.value.trim() || 'ثبت نشده';
   const buyerName = buyerNameInput.value.trim() || 'ثبت نشده';
   const buyerPhone = buyerPhoneInput.value.trim() || 'ثبت نشده';
@@ -239,51 +254,52 @@ sendToTelegramBtn.addEventListener('click', async function() {
 
   const typeMap = { 'new': 'طلای نو', 'used': 'طلای دست دوم', 'parsian': 'سکه پارسیان' };
   
-  let message = `🪙 *سفارش جدید - حله گلد* 🪙\n\n`;
-  message += `📅 تاریخ: ${new Date().toLocaleDateString('fa-IR')}\n`;
-  message += `⏰ زمان: ${new Date().toLocaleTimeString('fa-IR')}\n\n`;
+  let message = `سفارش جدید - حله گلد\n\n`;
+  message += `تاریخ: ${new Date().toLocaleDateString('fa-IR')}\n`;
+  message += `زمان: ${new Date().toLocaleTimeString('fa-IR')}\n\n`;
   message += `━━━━━━━━━━━━━━━━━━━━\n`;
-  message += `🆔 شناسه فروشنده: ${sellerId}\n`;
-  message += `👤 نام خریدار: ${buyerName}\n`;
-  message += `📞 تلفن خریدار: ${buyerPhone}\n`;
-  message += `🏷️ نام کالا: ${productName}\n`;
+  message += `شناسه فروشنده: ${sellerId}\n`;
+  message += `نام خریدار: ${buyerName}\n`;
+  message += `تلفن خریدار: ${buyerPhone}\n`;
+  message += `نام کالا: ${productName}\n`;
   message += `━━━━━━━━━━━━━━━━━━━━\n`;
-  message += `📦 نوع کالا: ${typeMap[lastCalculation.type] || lastCalculation.type}\n`;
-  message += `⚖️ وزن: ${lastCalculation.weight} گرم\n`;
-  message += `💰 قیمت روز هر گرم: ${formatNumber(lastCalculation.goldPrice)} تومان\n`;
+  message += `نوع کالا: ${typeMap[lastCalculation.type] || lastCalculation.type}\n`;
+  message += `عیار: ${lastCalculation.karat}\n`;
+  message += `وزن: ${lastCalculation.weight} گرم\n`;
+  message += `قیمت روز هر گرم: ${formatNumber(lastCalculation.goldPrice)} تومان\n`;
   
   if (lastCalculation.type === 'new') {
-    message += `📈 سود فروشنده: ${lastCalculation.sellerProfit}%\n`;
-    message += `🔨 اجرت ساخت: ${lastCalculation.wage}%\n`;
-    message += `📋 مالیات: ${lastCalculation.tax}%\n`;
+    message += `سود فروشنده: ${lastCalculation.sellerProfit}%\n`;
+    message += `اجرت ساخت: ${lastCalculation.wage}%\n`;
+    message += `مالیات: ${lastCalculation.tax}%\n`;
   } else {
-    message += `📈 سود فروشنده: ${lastCalculation.sellerProfit}%\n`;
+    message += `سود فروشنده: ${lastCalculation.sellerProfit}%\n`;
   }
   
   message += `━━━━━━━━━━━━━━━━━━━━\n`;
-  message += `💰 *قیمت نهایی: ${formatNumber(lastCalculation.finalPrice)} تومان*\n`;
+  message += `قیمت نهایی: ${formatNumber(lastCalculation.finalPrice)} تومان\n`;
   message += `━━━━━━━━━━━━━━━━━━━━\n\n`;
-  message += `🆔 ثبت شده توسط اپلیکیشن حله گلد`;
+  message += `ثبت شده توسط اپلیکیشن حله گلد`;
 
   const btn = sendToTelegramBtn;
   const originalText = btn.innerHTML;
-  btn.innerHTML = '⏳ در حال ارسال...';
+  btn.innerHTML = 'در حال ارسال...';
   btn.disabled = true;
 
   try {
-    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}&parse_mode=Markdown`;
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`;
     const response = await fetch(url);
     const result = await response.json();
     
     if (result.ok) {
-      alert('✅ سفارش با موفقیت به تلگرام ارسال شد!');
-      btn.innerHTML = '✓ ارسال شد';
+      alert('سفارش با موفقیت به تلگرام ارسال شد!');
+      btn.innerHTML = 'ارسال شد';
       setTimeout(() => { btn.innerHTML = originalText; btn.disabled = false; }, 2000);
     } else {
       throw new Error(result.description || 'خطا در ارسال');
     }
   } catch (error) {
-    alert('❌ خطا در ارسال به تلگرام. لطفاً دوباره تلاش کنید.');
+    alert('خطا در ارسال به تلگرام. لطفاً دوباره تلاش کنید.');
     console.error('خطا:', error);
     btn.innerHTML = originalText;
     btn.disabled = false;
