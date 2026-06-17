@@ -28,283 +28,765 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml;u
 .btn-primary:active{transform:scale(.98);box-shadow:0 3px 10px rgba(37,52,63,0.1)}
 .btn-secondary{width:100%;padding:13px;background:rgba(255,255,255,0.5);border:1px solid rgba(37,52,63,0.08);border-radius:44px;font-weight:500;font-size:13px;color:#25343F;cursor:pointer;transition:all .2s ease;margin-top:10px;font-family:'Vazir',sans-serif}
 .btn-secondary:active{transform:scale(.98);background:rgba(255,255,255,0.8)}
+.btn-tertiary{width:100%;padding:13px;background:rgba(255,155,81,0.12);border:1px solid rgba(255,155,81,0.25);border-radius:44px;font-weight:500;font-size:13px;color:#25343F;cursor:pointer;transition:all .2s ease;margin-top:8px;font-family:'Vazir',sans-serif}
+.btn-tertiary:active{transform:scale(.98);background:rgba(255,155,81,0.2)}
+.btn-sms{width:100%;padding:13px;background:rgba(46,204,113,0.15);border:1px solid rgba(46,204,113,0.3);border-radius:44px;font-weight:500;font-size:13px;color:#27ae60;cursor:pointer;transition:all .2s ease;margin-top:8px;font-family:'Vazir',sans-serif}
+.btn-sms:active{transform:scale(.98);background:rgba(46,204,113,0.25)}
+.btn-danger{width:100%;padding:13px;background:rgba(231,76,60,0.12);border:1px solid rgba(231,76,60,0.25);border-radius:44px;font-weight:500;font-size:13px;color:#c0392b;cursor:pointer;transition:all .2s ease;margin-top:8px;font-family:'Vazir',sans-serif}
+.btn-danger:active{transform:scale(.98);background:rgba(231,76,60,0.2)}
 .result-card{background:rgba(255,255,255,0.6);backdrop-filter:blur(8px);border-radius:36px;padding:22px;margin-top:22px;border:1px solid rgba(255,255,255,0.4);animation:fadeSlideUp .4s ease}
 @keyframes fadeSlideUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .price-main{font-size:36px;font-weight:700;color:#25343F;text-align:center;background:rgba(255,255,255,0.4);padding:20px;border-radius:32px;margin-bottom:0;letter-spacing:-.5px}
 .price-main .currency{font-size:15px;color:#5a6a7a;font-weight:400;margin-right:3px}
-.price-main .accent{color:#FF9B51}
-.footer{text-align:center;margin-top:28px;padding-top:16px;border-top:1px solid rgba(37,52,63,0.05);color:#6a7a8a;font-size:10px;display:flex;justify-content:center;align-items:center;gap:10px}
+.footer{text-align:center;margin-top:28px;padding-top:16px;border-top:1px solid rgba(37,52,63,0.05);color:#6a7a8a;font-size:10px;display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
 .footer .badge{background:#FF9B51;padding:2px 12px;border-radius:30px;font-size:9px;color:#fff;font-weight:600}
 .footer .divider{width:1px;height:12px;background:rgba(37,52,63,0.08)}
 .hidden{display:none}
 .price-note{font-size:10px;color:#6a7a8a;margin-top:6px;margin-right:6px}
 .price-note a{color:#FF9B51;text-decoration:none;font-weight:500}
-@media (max-width:480px){.glass-card{padding:24px 18px 28px;border-radius:40px}h1{font-size:22px}.price-main{font-size:30px;padding:16px}.price-main .currency{font-size:13px}.btn-primary,.btn-secondary{padding:13px;font-size:13px}select,input,.price-input-wrapper input{padding:12px 16px;font-size:13px}.price-unit{left:12px;padding:2px 10px;font-size:10px}}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:999;padding:20px}
+.modal-overlay.active{display:flex}
+.modal-box{background:#BFC9D1;border-radius:40px;padding:28px 24px;max-width:440px;width:100%;border:1px solid rgba(255,255,255,0.3);box-shadow:0 30px 60px rgba(0,0,0,0.15);animation:modalIn .3s ease}
+@keyframes modalIn{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-box h3{color:#25343F;font-size:18px;font-weight:700;margin-bottom:16px;text-align:center}
+.modal-box textarea{width:100%;padding:14px 18px;background:rgba(255,255,255,0.7);border:1px solid rgba(37,52,63,0.1);border-radius:28px;font-size:14px;color:#25343F;font-family:'Vazir',sans-serif;font-weight:400;outline:none;resize:vertical;min-height:120px;transition:all .2s ease}
+.modal-box textarea:focus{border-color:#FF9B51;box-shadow:0 0 0 3px rgba(255,155,81,0.08);background:#fff}
+.modal-actions{display:flex;gap:10px;margin-top:16px}
+.modal-actions button{flex:1;padding:12px;border-radius:40px;font-weight:600;font-size:14px;cursor:pointer;transition:all .2s ease;font-family:'Vazir',sans-serif;border:none}
+.modal-actions .btn-confirm{background:#25343F;color:#fff}
+.modal-actions .btn-confirm:active{transform:scale(.98)}
+.modal-actions .btn-cancel{background:rgba(255,255,255,0.5);color:#25343F;border:1px solid rgba(37,52,63,0.1)}
+.modal-actions .btn-cancel:active{transform:scale(.98)}
+.invoice-print{display:none}
+.discount-warning{color:#e74c3c;font-size:11px;margin-top:4px;display:none}
+.invoice-number-display{font-size:11px;color:#5a6a7a;text-align:center;margin-top:4px}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,0.3);border-radius:50%;border-top-color:#fff;animation:spin .6s linear infinite;vertical-align:middle;margin-left:6px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sms-note{font-size:9px;color:#6a7a8a;text-align:center;margin-top:4px;display:block}
+@media print{
+  body{background:#fff;padding:0;margin:0;position:static;overflow:visible}
+  .glass-card{display:none}
+  .modal-overlay{display:none!important}
+  .invoice-print{
+    display:block;
+    width:148mm;
+    height:210mm;
+    padding:8mm 10mm;
+    margin:0 auto;
+    background:#fff;
+    font-family:'Vazir','Tahoma',sans-serif;
+    direction:rtl;
+    box-sizing:border-box;
+    position:relative;
+    color:#25343F;
+    font-size:10px;
+    page-break-after:avoid;
+    overflow:hidden;
+  }
+  .invoice-print .inv-header{
+    text-align:center;
+    border-bottom:2px solid #25343F;
+    padding-bottom:4px;
+    margin-bottom:6px;
+    position:relative;
+  }
+  .invoice-print .inv-header h2{
+    font-size:16px;
+    font-weight:700;
+    color:#25343F;
+    margin:0;
+    letter-spacing:1px;
+  }
+  .invoice-print .inv-header .inv-number{
+    font-size:9px;
+    color:#25343F;
+    font-weight:700;
+    position:absolute;
+    left:0;
+    top:0;
+    margin:0;
+  }
+  .invoice-print .inv-section{
+    margin-bottom:4px;
+  }
+  .invoice-print .inv-section-title{
+    font-size:8.5px;
+    font-weight:700;
+    color:#25343F;
+    border-bottom:1px solid #25343F;
+    padding-bottom:1.5px;
+    margin-bottom:2px;
+    letter-spacing:.5px;
+  }
+  .invoice-print .inv-row{
+    display:flex;
+    justify-content:space-between;
+    padding:1.5px 0;
+    font-size:8.5px;
+    border-bottom:1px dashed rgba(37,52,63,0.06);
+  }
+  .invoice-print .inv-row .label{
+    color:#5a6a7a;
+    font-weight:400;
+  }
+  .invoice-print .inv-row .value{
+    color:#25343F;
+    font-weight:500;
+  }
+  .invoice-print .inv-total-box{
+    background:#EAF2F2;
+    padding:4px 10px;
+    border-radius:4px;
+    margin-top:4px;
+    text-align:center;
+    border:2px solid #25343F;
+  }
+  .invoice-print .inv-total-box .total-label{
+    font-size:8px;
+    color:#5a6a7a;
+  }
+  .invoice-print .inv-total-box .total-price{
+    font-size:16px;
+    font-weight:800;
+    color:#25343F;
+  }
+  .invoice-print .inv-signatures{
+    display:flex;
+    justify-content:space-between;
+    margin-top:8px;
+    padding-top:6px;
+    border-top:1px solid #25343F;
+  }
+  .invoice-print .inv-signatures .sign-box{
+    text-align:center;
+    width:45%;
+  }
+  .invoice-print .inv-signatures .sign-box .sign-line{
+    width:100%;
+    height:1px;
+    background:#25343F;
+    margin-top:12px;
+    margin-bottom:2px;
+  }
+  .invoice-print .inv-signatures .sign-box .sign-label{
+    font-size:7px;
+    color:#5a6a7a;
+  }
+  .invoice-print .inv-footer{
+    text-align:center;
+    font-size:6.5px;
+    color:#6a7a8a;
+    margin-top:6px;
+    padding-top:4px;
+    border-top:1px solid #EAF2F2;
+    position:absolute;
+    bottom:6mm;
+    left:0;
+    right:0;
+  }
+  .invoice-print .inv-footer .brand{
+    color:#25343F;
+    font-weight:600;
+    font-size:7px;
+  }
+}
 </style>
 </head>
 <body>
 <div class="glass-card">
-  <div class="header">
-    <h1>حله گلد</h1>
-    <div class="sub">محاسبه‌گر هوشمند طلا و سکه</div>
-  </div>
+  <div class="header"><h1>حله گلد</h1><div class="sub">محاسبه گر هوشمند طلا و سکه</div></div>
 
-  <div class="form-group">
-    <label>شناسه فروشنده</label>
-    <input type="text" id="sellerId" placeholder="مثال: 1001">
-  </div>
-
-  <div class="form-group">
-    <label>نام خریدار</label>
-    <input type="text" id="buyerName" placeholder="مثال: علی محمدی">
-  </div>
-
-  <div class="form-group">
-    <label>شماره تلفن خریدار</label>
-    <input type="tel" id="buyerPhone" placeholder="مثال: 09123456789">
-  </div>
-
-  <div class="form-group">
-    <label>نام کالا</label>
-    <input type="text" id="productName" placeholder="مثال: انگشتر طلا">
-  </div>
-
-  <div class="form-group">
-    <label>نوع کالا</label>
-    <select id="productType">
-      <option value="">انتخاب کنید</option>
-      <option value="new">طلای نو</option>
-      <option value="used">طلای دست دوم</option>
-      <option value="parsian">سکه پارسیان</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label>عیار</label>
-    <input type="number" id="karat" step="any" value="750" placeholder="مثال: 750">
-  </div>
-
-  <div class="form-group">
-    <label>قیمت روز هر گرم طلا (تومان)</label>
-    <div class="price-input-wrapper">
-      <input type="text" id="goldPrice" inputmode="numeric" placeholder="مثال: 16,000,000" value="">
-      <span class="price-unit">تومان</span>
-    </div>
-    <div class="price-note">در صورت نیاز به دریافت قیمت روز، از لینک زیر استفاده کنید:<br><a href="https://tabangohar.com" target="_blank">tabangohar.com</a></div>
-  </div>
-
+  <div class="form-group"><label>شناسه فروشنده</label><input type="text" id="sellerId" placeholder="مثال: 1001"></div>
+  <div class="form-group"><label>نام خریدار</label><input type="text" id="buyerName" placeholder="مثال: علی محمدی"></div>
+  <div class="form-group"><label>شماره تلفن خریدار</label><input type="tel" id="buyerPhone" placeholder="مثال: 09123456789" maxlength="11"></div>
+  <div class="form-group"><label>نام کالا</label><input type="text" id="productName" placeholder="مثال: انگشتر طلا"></div>
+  <div class="form-group"><label>نوع کالا</label><select id="productType"><option value="">انتخاب کنید</option><option value="new">طلای نو</option><option value="used">طلای دست دوم</option><option value="parsian">سکه پارسیان</option></select></div>
+  <div class="form-group"><label>عیار</label><input type="number" id="karat" step="any" value="750" placeholder="مثال: 750" min="0" max="1000"></div>
+  <div class="form-group"><label>قیمت روز هر گرم طلا (تومان)</label><div class="price-input-wrapper"><input type="text" id="goldPrice" inputmode="numeric" placeholder="مثال: 16,000,000" value=""><span class="price-unit">تومان</span></div><div class="price-note">در صورت نیاز به دریافت قیمت روز، از لینک زیر استفاده کنید:<br><a href="https://tabangohar.com" target="_blank">tabangohar.com</a></div></div>
   <div id="dynamicFields"></div>
+  <div class="form-group"><label>تخفیف (تومان)</label><div class="price-input-wrapper"><input type="text" id="discountInput" inputmode="numeric" placeholder="مثال: 500,000" value="0"><span class="price-unit">تومان</span></div><div class="discount-warning" id="discountWarning">تخفیف بیشتر از قیمت پایه است!</div></div>
   
   <button class="btn-primary" id="calcBtn">محاسبه قیمت نهایی</button>
   
   <div id="resultArea" class="result-card hidden">
     <div class="price-main" id="finalPrice">۰ <span class="currency">تومان</span></div>
-    <button class="btn-secondary" id="sendToTelegramBtn">ثبت سفارش در <span class="accent">تلگرام</span></button>
+    <div class="invoice-number-display" id="invoiceNumberDisplay"></div>
+    <button class="btn-secondary" id="sendToTelegramBtn">ثبت سفارش در تلگرام</button>
+    <button class="btn-sms" id="sendSmsBtn">ارسال پیامک به خریدار</button>
+    <span class="sms-note">با کلیک روی این دکمه، پیام سفارش به شماره خریدار ارسال ميشود</span>
+    <button class="btn-tertiary" id="printInvoiceBtn">چاپ فاکتور</button>
+    <button class="btn-danger" id="resetBtn">پاک کردن همه اطلاعات</button>
   </div>
   
-  <div class="footer">
-    <span>طراحی شده توسط دانیال ستاری</span>
-    <span class="divider"></span>
-    <span class="badge">۸۰۰۸</span>
+  <div class="footer"><span>طراحی شده توسط دانیال ستاری</span><span class="divider"></span><span class="badge">۸۰۰۸</span></div>
+</div>
+
+<div class="modal-overlay" id="sellerModal">
+  <div class="modal-box">
+    <h3>مشخصات فروشنده</h3>
+    <textarea id="sellerInfoInput" placeholder="نام فروشنده، آدرس، شماره تماس را وارد کنید..."></textarea>
+    <div class="modal-actions"><button class="btn-confirm" id="modalConfirm">تأیید و چاپ</button><button class="btn-cancel" id="modalCancel">انصراف</button></div>
   </div>
 </div>
 
+<div class="invoice-print" id="invoicePrint">
+  <div class="inv-header">
+    <h2>فاکتور فروش</h2>
+    <div class="inv-number" id="invoiceNumber"></div>
+  </div>
+  <div id="invoiceContent"></div>
+  <div class="inv-signatures">
+    <div class="sign-box"><div class="sign-line"></div><div class="sign-label">امضای فروشنده</div></div>
+    <div class="sign-box"><div class="sign-line"></div><div class="sign-label">امضای خریدار</div></div>
+  </div>
+  <div class="inv-footer" id="invoiceFooter"></div>
+</div>
+
 <script>
-const BOT_TOKEN = "8856587960:AAHWmOaNPLR54ikgpo0T-N4n2r4lN7K-hVY";
-const CHAT_ID = "7902314276";
+// ========== تنظیمات ==========
+var BOT_TOKEN = "8856587960:AAHWmOaNPLR54ikgpo0T-N4n2r4lN7K-hVY";
+var CHAT_ID = "7902314276";
 
-const productType = document.getElementById('productType');
-const goldPriceInput = document.getElementById('goldPrice');
-const karatInput = document.getElementById('karat');
-const dynamicFields = document.getElementById('dynamicFields');
-const calcBtn = document.getElementById('calcBtn');
-const resultArea = document.getElementById('resultArea');
-const finalPriceSpan = document.getElementById('finalPrice');
-const sendToTelegramBtn = document.getElementById('sendToTelegramBtn');
+// ========== المنت‌ها ==========
+var productType = document.getElementById('productType');
+var goldPriceInput = document.getElementById('goldPrice');
+var karatInput = document.getElementById('karat');
+var discountInput = document.getElementById('discountInput');
+var dynamicFields = document.getElementById('dynamicFields');
+var calcBtn = document.getElementById('calcBtn');
+var resultArea = document.getElementById('resultArea');
+var finalPriceSpan = document.getElementById('finalPrice');
+var sendToTelegramBtn = document.getElementById('sendToTelegramBtn');
+var sendSmsBtn = document.getElementById('sendSmsBtn');
+var printInvoiceBtn = document.getElementById('printInvoiceBtn');
+var resetBtn = document.getElementById('resetBtn');
+var discountWarning = document.getElementById('discountWarning');
+var invoiceNumberDisplay = document.getElementById('invoiceNumberDisplay');
 
-const sellerIdInput = document.getElementById('sellerId');
-const buyerNameInput = document.getElementById('buyerName');
-const buyerPhoneInput = document.getElementById('buyerPhone');
-const productNameInput = document.getElementById('productName');
+var sellerIdInput = document.getElementById('sellerId');
+var buyerNameInput = document.getElementById('buyerName');
+var buyerPhoneInput = document.getElementById('buyerPhone');
+var productNameInput = document.getElementById('productName');
 
-let lastCalculation = { finalPrice: 0, type: '', weight: 0, goldPrice: 0, sellerProfit: 0, wage: 0, tax: 0, karat: 750 };
+var sellerModal = document.getElementById('sellerModal');
+var sellerInfoInput = document.getElementById('sellerInfoInput');
+var modalConfirm = document.getElementById('modalConfirm');
+var modalCancel = document.getElementById('modalCancel');
 
+var DEFAULT_SELLER = 'زرگری ستاري\nآدرس: آذربایجان شرقی - تبریز - میدان جهاد - جنب پاساژ اسلامي - پلاک ۱\nشماره تماس: ۰۹۰۵۷۰۹۸۳۱۱ - ۰۹۱۴۳۰۲۰۰۹۷ - ۰۴۱۳۴۴۰۰۳۳۵';
+
+var lastCalculation = { finalPrice: 0, type: '', weight: 0, goldPrice: 0, sellerProfit: 0, wage: 0, tax: 0, karat: 750, discount: 0, basePrice: 0 };
+var tempSellerInfo = '';
+var currentInvoiceNumber = '';
+
+// ========== توابع کمکی ==========
 function toEnglishNumbers(str) {
-  const persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-  const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
-  let result = str;
-  for (let i = 0; i < 10; i++) {
-    result = result.replace(new RegExp(persianNumbers[i], 'g'), i.toString());
-    result = result.replace(new RegExp(arabicNumbers[i], 'g'), i.toString());
+  if (!str) return '';
+  var p = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+  var a = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+  var r = String(str);
+  for(var i=0;i<10;i++){
+    r = r.replace(new RegExp(p[i],'g'), i);
+    r = r.replace(new RegExp(a[i],'g'), i);
   }
-  result = result.replace(/[^0-9.]/g, '');
-  return result;
+  r = r.replace(/[^0-9.]/g, '');
+  return r;
 }
 
-function parsePrice(value) {
-  if (!value || value === '') return NaN;
-  let cleaned = toEnglishNumbers(String(value));
-  if (cleaned === '' || cleaned === '.') return NaN;
-  let num = parseFloat(cleaned);
+function parsePrice(v){
+  if(!v) return NaN;
+  var cleaned = toEnglishNumbers(String(v));
+  if(cleaned === '' || cleaned === '.') return NaN;
+  cleaned = cleaned.replace(/,/g, '');
+  var num = parseFloat(cleaned);
   return isNaN(num) ? NaN : num;
 }
 
-function formatNumber(n) {
-  if (isNaN(n)) return '0';
-  return Math.floor(n).toLocaleString('fa-IR');
+function formatNumber(n){
+  if(isNaN(n)) return '0';
+  if (Number.isInteger(n)) {
+    return Math.floor(n).toLocaleString('fa-IR');
+  }
+  return n.toLocaleString('fa-IR', { maximumFractionDigits: 2 });
 }
 
-let isFormatting = false;
-function formatPriceInput(e) {
-  if (isFormatting) return;
-  isFormatting = true;
-  let rawValue = e.target.value;
-  let numbersOnly = toEnglishNumbers(rawValue);
-  if (numbersOnly === '') {
+function getLast4Digits(phone) {
+  if (!phone) return '0000';
+  var digits = phone.replace(/\D/g, '');
+  if (digits.length >= 4) {
+    return digits.slice(-4);
+  } else if (digits.length > 0) {
+    return digits.padStart(4, '0');
+  }
+  return '0000';
+}
+
+function validatePhone(phone) {
+  if (!phone) return true;
+  var digits = phone.replace(/\D/g, '');
+  return digits.length >= 10 && digits.length <= 11;
+}
+
+function generateInvoiceNumber() {
+  var last4Digits = getLast4Digits(buyerPhoneInput.value);
+  var now = new Date();
+  var year = now.getFullYear();
+  var month = String(now.getMonth() + 1).padStart(2, '0');
+  var day = String(now.getDate()).padStart(2, '0');
+  var dateStr = year + month + day;
+  return last4Digits + dateStr;
+}
+
+function getSellerInfo() {
+  if (tempSellerInfo) {
+    return tempSellerInfo;
+  }
+  return DEFAULT_SELLER;
+}
+
+function buildSmsMessage() {
+  var sellerId = sellerIdInput.value.trim() || 'ثبت نشده';
+  var buyerName = buyerNameInput.value.trim() || 'ثبت نشده';
+  var buyerPhone = buyerPhoneInput.value.trim() || 'ثبت نشده';
+  var productName = productNameInput.value.trim() || 'ثبت نشده';
+  var typeMap = { 'new': 'طلای نو', 'used': 'طلای دست دوم', 'parsian': 'سکه پارسیان' };
+  
+  var sellerInfo = getSellerInfo();
+  
+  var msg = 'حله گلد - فاکتور فروش\n\n';
+  
+  msg += 'مشخصات فروشنده:\n';
+  var sellerLines = sellerInfo.split('\n');
+  for(var i=0; i<sellerLines.length; i++) {
+    if(sellerLines[i].trim()) {
+      msg += sellerLines[i].trim() + '\n';
+    }
+  }
+  msg += '\n';
+  
+  msg += 'مشخصات خریدار:\n';
+  msg += 'نام خریدار: ' + buyerName + '\n';
+  msg += 'شماره تلفن: ' + buyerPhone + '\n';
+  msg += '\n';
+  
+  msg += 'اطلاعات کالا:\n';
+  msg += 'شناسه فروشنده: ' + sellerId + '\n';
+  msg += 'نام کالا: ' + productName + '\n';
+  msg += 'نوع کالا: ' + (typeMap[lastCalculation.type] || lastCalculation.type) + '\n';
+  msg += 'عیار: ' + lastCalculation.karat + '\n';
+  msg += 'وزن: ' + lastCalculation.weight + ' گرم\n';
+  msg += 'قیمت روز هر گرم: ' + formatNumber(lastCalculation.goldPrice) + ' تومان\n';
+  
+  if (lastCalculation.type === 'new') {
+    msg += 'سود فروشنده: ' + lastCalculation.sellerProfit + '%\n';
+    msg += 'اجرت ساخت: ' + lastCalculation.wage + '%\n';
+    msg += 'مالیات: ' + lastCalculation.tax + '%\n';
+  } else {
+    msg += 'سود فروشنده: ' + lastCalculation.sellerProfit + '%\n';
+  }
+  msg += 'تخفیف: ' + formatNumber(lastCalculation.discount) + ' تومان\n';
+  msg += '\n';
+  
+  msg += 'قیمت نهایی: ' + formatNumber(lastCalculation.finalPrice) + ' تومان\n';
+  msg += '\n';
+  msg += 'شماره فاکتور: ' + currentInvoiceNumber + '\n';
+  msg += 'تاریخ: ' + new Date().toLocaleDateString('fa-IR') + '\n';
+  msg += '\n';
+  msg += 'حله گلد - محاسبه گر هوشمند طلا';
+  
+  return msg;
+}
+
+// ========== فرمت‌کننده قیمت ==========
+var isFormatting=false;
+function formatPriceInput(e){
+  if(isFormatting) return;
+  isFormatting=true;
+  var raw = e.target.value;
+  var only = toEnglishNumbers(raw);
+  if(only === ''){
     e.target.value = '';
-    isFormatting = false;
+    isFormatting=false;
     return;
   }
-  let num = parseFloat(numbersOnly);
-  if (!isNaN(num)) {
+  var num = parseFloat(only);
+  if(!isNaN(num)){
     e.target.value = formatNumber(num);
   }
-  isFormatting = false;
+  isFormatting=false;
 }
 
 goldPriceInput.addEventListener('input', formatPriceInput);
+discountInput.addEventListener('input', formatPriceInput);
+
+// ========== فیلدهای پویا ==========
+var dynamicValues = {};
+
+function saveDynamicFields() {
+  var inputs = dynamicFields.querySelectorAll('input');
+  inputs.forEach(function(input) {
+    dynamicValues[input.id] = input.value;
+  });
+}
+
+function restoreDynamicFields() {
+  var inputs = dynamicFields.querySelectorAll('input');
+  inputs.forEach(function(input) {
+    if (dynamicValues[input.id] !== undefined) {
+      input.value = dynamicValues[input.id];
+    }
+  });
+}
 
 productType.addEventListener('change', function() {
-  const type = this.value;
+  saveDynamicFields();
+  
+  var type = this.value;
   if (type === 'new') {
-    dynamicFields.innerHTML = `
-      <div class="form-group"><label>وزن (گرم)</label><input type="number" id="weight" step="any" value="0.00"></div>
-      <div class="form-group"><label>سود فروشنده (درصد)</label><input type="number" id="sellerProfit" step="any" value="7"></div>
-      <div class="form-group"><label>اجرت ساخت (درصد)</label><input type="number" id="wage" step="any" value="12"></div>
-      <div class="form-group"><label>مالیات (درصد)</label><input type="number" id="tax" step="any" value="2"></div>
-    `;
+    dynamicFields.innerHTML = '<div class="form-group"><label>وزن (گرم)</label><input type="number" id="weight" step="any" value="0.00" min="0"></div>' +
+      '<div class="form-group"><label>سود فروشنده (درصد)</label><input type="number" id="sellerProfit" step="any" value="7" min="0"></div>' +
+      '<div class="form-group"><label>اجرت ساخت (درصد)</label><input type="number" id="wage" step="any" value="12" min="0"></div>' +
+      '<div class="form-group"><label>مالیات (درصد)</label><input type="number" id="tax" step="any" value="2" min="0"></div>';
   } else if (type === 'used') {
-    dynamicFields.innerHTML = `
-      <div class="form-group"><label>وزن (گرم)</label><input type="number" id="weight" step="any" value="0.00"></div>
-      <div class="form-group"><label>سود فروشنده (درصد)</label><input type="number" id="sellerProfit" step="any" value="7"></div>
-    `;
+    dynamicFields.innerHTML = '<div class="form-group"><label>وزن (گرم)</label><input type="number" id="weight" step="any" value="0.00" min="0"></div>' +
+      '<div class="form-group"><label>سود فروشنده (درصد)</label><input type="number" id="sellerProfit" step="any" value="7" min="0"></div>';
   } else if (type === 'parsian') {
-    dynamicFields.innerHTML = `
-      <div class="form-group"><label>وزن سکه (گرم)</label><input type="number" id="weight" step="any" value="0.00"></div>
-      <div class="form-group"><label>سود فروشنده (درصد)</label><input type="number" id="sellerProfit" step="any" value="7"></div>
-    `;
-  } else {
-    dynamicFields.innerHTML = '';
+    dynamicFields.innerHTML = '<div class="form-group"><label>وزن سکه (گرم)</label><input type="number" id="weight" step="any" value="0.00" min="0"></div>' +
+      '<div class="form-group"><label>سود فروشنده (درصد)</label><input type="number" id="sellerProfit" step="any" value="7" min="0"></div>';
+  } else { 
+    dynamicFields.innerHTML = ''; 
+    dynamicValues = {};
   }
+  
+  restoreDynamicFields();
   resultArea.classList.add('hidden');
+  discountWarning.style.display = 'none';
+  invoiceNumberDisplay.textContent = '';
 });
 
+// ========== محاسبه ==========
 calcBtn.addEventListener('click', function() {
-  const type = productType.value;
-  let rawPrice = goldPriceInput.value;
-  let goldPrice = parsePrice(rawPrice);
-  let weight = parseFloat(document.getElementById('weight')?.value) || 0;
-  let sellerProfit = parseFloat(document.getElementById('sellerProfit')?.value) || 0;
-  let wage = parseFloat(document.getElementById('wage')?.value) || 0;
-  let tax = parseFloat(document.getElementById('tax')?.value) || 0;
-  let karat = parseFloat(karatInput.value) || 750;
+  var type = productType.value;
+  var rawPrice = goldPriceInput.value;
+  var goldPrice = parsePrice(rawPrice);
+  var weight = parseFloat(document.getElementById('weight')?.value) || 0;
+  var sellerProfit = parseFloat(document.getElementById('sellerProfit')?.value) || 0;
+  var wage = parseFloat(document.getElementById('wage')?.value) || 0;
+  var tax = parseFloat(document.getElementById('tax')?.value) || 0;
+  var karat = parseFloat(karatInput.value) || 750;
+  var discount = parsePrice(discountInput.value) || 0;
 
-  if (!type) { alert('لطفاً نوع کالا را انتخاب کنید'); return; }
-  if (isNaN(goldPrice) || goldPrice <= 0) { alert('لطفاً قیمت روز معتبر وارد کنید'); return; }
-  if (isNaN(weight) || weight <= 0) { alert('وزن معتبر وارد کنید'); return; }
-
-  let finalPrice = 0;
-  if (type === 'new') {
-    let totalPercent = sellerProfit + wage + tax;
-    let multiplier = 1 + (totalPercent / 100);
-    let finalWeight = weight * multiplier;
-    finalPrice = finalWeight * goldPrice;
-  } else if (type === 'used' || type === 'parsian') {
-    let multiplier = 1 + (sellerProfit / 100);
-    let finalWeight = weight * multiplier;
-    finalPrice = finalWeight * goldPrice;
+  if (!type) { 
+    alert('لطفاً نوع کالا را انتخاب کنید'); 
+    return; 
   }
-
-  lastCalculation = {
-    finalPrice: finalPrice,
-    type: type,
-    typeName: productType.options[productType.selectedIndex]?.text || type,
-    weight: weight,
-    goldPrice: goldPrice,
-    sellerProfit: sellerProfit,
-    wage: wage,
-    tax: tax,
-    karat: karat
-  };
-
-  finalPriceSpan.innerHTML = formatNumber(finalPrice) + ' <span class="currency">تومان</span>';
-  resultArea.classList.remove('hidden');
-});
-
-sendToTelegramBtn.addEventListener('click', async function() {
-  if (lastCalculation.finalPrice === 0) {
-    alert('ابتدا قیمت نهایی را محاسبه کنید');
+  if (isNaN(goldPrice) || goldPrice <= 0) { 
+    alert('لطفاً قیمت روز معتبر وارد کنید'); 
+    return; 
+  }
+  if (isNaN(weight) || weight <= 0) { 
+    alert('وزن معتبر وارد کنید'); 
+    return; 
+  }
+  
+  var phone = buyerPhoneInput.value.trim();
+  if (phone && !validatePhone(phone)) {
+    alert('شماره تلفن وارد شده معتبر نیست (باید بین ۱۰ تا ۱۱ رقم باشد)');
     return;
   }
 
-  const sellerId = sellerIdInput.value.trim() || 'ثبت نشده';
-  const buyerName = buyerNameInput.value.trim() || 'ثبت نشده';
-  const buyerPhone = buyerPhoneInput.value.trim() || 'ثبت نشده';
-  const productName = productNameInput.value.trim() || 'ثبت نشده';
-
-  const typeMap = { 'new': 'طلای نو', 'used': 'طلای دست دوم', 'parsian': 'سکه پارسیان' };
+  var basePrice = 0, finalPrice = 0;
+  if (type === 'new') {
+    var totalPercent = sellerProfit + wage + tax;
+    var multiplier = 1 + (totalPercent / 100);
+    var finalWeight = weight * multiplier;
+    basePrice = Math.round(finalWeight * goldPrice);
+    finalPrice = basePrice - discount;
+  } else if (type === 'used' || type === 'parsian') {
+    var multiplier2 = 1 + (sellerProfit / 100);
+    var finalWeight2 = weight * multiplier2;
+    basePrice = Math.round(finalWeight2 * goldPrice);
+    finalPrice = basePrice - discount;
+  }
   
-  let message = `سفارش جدید - حله گلد\n\n`;
-  message += `تاریخ: ${new Date().toLocaleDateString('fa-IR')}\n`;
-  message += `زمان: ${new Date().toLocaleTimeString('fa-IR')}\n\n`;
-  message += `━━━━━━━━━━━━━━━━━━━━\n`;
-  message += `شناسه فروشنده: ${sellerId}\n`;
-  message += `نام خریدار: ${buyerName}\n`;
-  message += `تلفن خریدار: ${buyerPhone}\n`;
-  message += `نام کالا: ${productName}\n`;
-  message += `━━━━━━━━━━━━━━━━━━━━\n`;
-  message += `نوع کالا: ${typeMap[lastCalculation.type] || lastCalculation.type}\n`;
-  message += `عیار: ${lastCalculation.karat}\n`;
-  message += `وزن: ${lastCalculation.weight} گرم\n`;
-  message += `قیمت روز هر گرم: ${formatNumber(lastCalculation.goldPrice)} تومان\n`;
+  if (discount > basePrice) {
+    discountWarning.style.display = 'block';
+    finalPrice = 0;
+  } else {
+    discountWarning.style.display = 'none';
+  }
+  
+  if (finalPrice < 0) finalPrice = 0;
+
+  lastCalculation = { 
+    finalPrice: finalPrice, 
+    basePrice: basePrice, 
+    discount: discount, 
+    type: type, 
+    typeName: productType.options[productType.selectedIndex]?.text || type, 
+    weight: weight, 
+    goldPrice: goldPrice, 
+    sellerProfit: sellerProfit, 
+    wage: wage, 
+    tax: tax, 
+    karat: karat 
+  };
+  
+  currentInvoiceNumber = generateInvoiceNumber();
+  
+  finalPriceSpan.innerHTML = formatNumber(finalPrice) + ' <span class="currency">تومان</span>';
+  invoiceNumberDisplay.textContent = 'شماره فاکتور: ' + currentInvoiceNumber;
+  resultArea.classList.remove('hidden');
+});
+
+// ========== چاپ فاکتور ==========
+printInvoiceBtn.addEventListener('click', function() {
+  if (lastCalculation.finalPrice === 0 && lastCalculation.basePrice === 0) {
+    alert('ابتدا قیمت نهایی را محاسبه کنید');
+    return;
+  }
+  if (tempSellerInfo) {
+    sellerInfoInput.value = tempSellerInfo;
+  }
+  sellerModal.classList.add('active');
+  sellerInfoInput.focus();
+});
+
+modalConfirm.addEventListener('click', function() {
+  var sellerInfo = sellerInfoInput.value.trim();
+  if (!sellerInfo) { 
+    alert('لطفاً مشخصات فروشنده را وارد کنید.'); 
+    return; 
+  }
+  if (sellerInfo.trim() === 'ادمین') sellerInfo = DEFAULT_SELLER;
+  
+  tempSellerInfo = sellerInfo;
+  sellerModal.classList.remove('active');
+  generateInvoice(sellerInfo);
+});
+
+modalCancel.addEventListener('click', function() { 
+  sellerModal.classList.remove('active'); 
+});
+
+sellerModal.addEventListener('click', function(e) { 
+  if (e.target === sellerModal) sellerModal.classList.remove('active'); 
+});
+
+function generateInvoice(sellerInfo) {
+  var sellerId = sellerIdInput.value.trim() || 'ثبت نشده';
+  var buyerName = buyerNameInput.value.trim() || 'ثبت نشده';
+  var buyerPhone = buyerPhoneInput.value.trim() || 'ثبت نشده';
+  var productName = productNameInput.value.trim() || 'ثبت نشده';
+  var typeMap = { 'new': 'طلای نو', 'used': 'طلای دست دوم', 'parsian': 'سکه پارسیان' };
+  
+  var now = new Date();
+  var persianDate = new Intl.DateTimeFormat('fa-IR', { 
+    year: 'numeric', month: '2-digit', day: '2-digit'
+  }).format(now);
+  
+  var invoiceNumberEl = document.getElementById('invoiceNumber');
+  if (invoiceNumberEl) {
+    invoiceNumberEl.textContent = 'شماره فاکتور: ' + currentInvoiceNumber;
+  }
+  
+  var html = '';
+  html += '<div class="inv-section"><div class="inv-section-title">مشخصات فروشنده</div>';
+  sellerInfo.split('\n').forEach(function(line) { 
+    if(line.trim()) html += '<div style="font-size:9px;color:#25343F;padding:1px 0;">' + line.trim() + '</div>'; 
+  });
+  html += '</div>';
+  
+  html += '<div class="inv-section"><div class="inv-section-title">مشخصات خریدار</div>';
+  html += '<div class="inv-row"><span class="label">نام خریدار</span><span class="value">' + buyerName + '</span></div>';
+  html += '<div class="inv-row"><span class="label">شماره تلفن</span><span class="value">' + buyerPhone + '</span></div>';
+  html += '<div class="inv-row"><span class="label">۴ رقم آخر تلفن</span><span class="value">' + getLast4Digits(buyerPhone) + '</span></div></div>';
+  
+  html += '<div class="inv-section"><div class="inv-section-title">اطلاعات کالا</div>';
+  html += '<div class="inv-row"><span class="label">شناسه فروشنده</span><span class="value">' + sellerId + '</span></div>';
+  html += '<div class="inv-row"><span class="label">نام کالا</span><span class="value">' + productName + '</span></div>';
+  html += '<div class="inv-row"><span class="label">نوع کالا</span><span class="value">' + (typeMap[lastCalculation.type] || lastCalculation.type) + '</span></div>';
+  html += '<div class="inv-row"><span class="label">عیار</span><span class="value">' + lastCalculation.karat + '</span></div>';
+  html += '<div class="inv-row"><span class="label">وزن</span><span class="value">' + lastCalculation.weight + ' گرم</span></div>';
+  html += '<div class="inv-row"><span class="label">قیمت روز هر گرم</span><span class="value">' + formatNumber(lastCalculation.goldPrice) + ' تومان</span></div>';
   
   if (lastCalculation.type === 'new') {
-    message += `سود فروشنده: ${lastCalculation.sellerProfit}%\n`;
-    message += `اجرت ساخت: ${lastCalculation.wage}%\n`;
-    message += `مالیات: ${lastCalculation.tax}%\n`;
+    html += '<div class="inv-row"><span class="label">سود فروشنده</span><span class="value">' + lastCalculation.sellerProfit + '%</span></div>';
+    html += '<div class="inv-row"><span class="label">اجرت ساخت</span><span class="value">' + lastCalculation.wage + '%</span></div>';
+    html += '<div class="inv-row"><span class="label">مالیات</span><span class="value">' + lastCalculation.tax + '%</span></div>';
   } else {
-    message += `سود فروشنده: ${lastCalculation.sellerProfit}%\n`;
+    html += '<div class="inv-row"><span class="label">سود فروشنده</span><span class="value">' + lastCalculation.sellerProfit + '%</span></div>';
   }
   
-  message += `━━━━━━━━━━━━━━━━━━━━\n`;
-  message += `قیمت نهایی: ${formatNumber(lastCalculation.finalPrice)} تومان\n`;
-  message += `━━━━━━━━━━━━━━━━━━━━\n\n`;
-  message += `ثبت شده توسط اپلیکیشن حله گلد`;
+  html += '<div class="inv-row"><span class="label">تخفیف</span><span class="value">' + formatNumber(lastCalculation.discount) + ' تومان</span></div>';
+  html += '<div class="inv-row" style="border-bottom:2px solid #25343F;padding-bottom:3px;margin-bottom:3px;"><span class="label">تاریخ</span><span class="value">' + persianDate + '</span></div></div>';
+  
+  html += '<div class="inv-total-box"><div class="total-label">قیمت نهایی</div><div class="total-price">' + formatNumber(lastCalculation.finalPrice) + ' تومان</div></div>';
+  
+  document.getElementById('invoiceContent').innerHTML = html;
+  document.getElementById('invoiceFooter').innerHTML = '<span class="brand">قدرت گرفته از Halle Group</span>';
+  
+  setTimeout(function() { window.print(); }, 500);
+}
 
-  const btn = sendToTelegramBtn;
-  const originalText = btn.innerHTML;
-  btn.innerHTML = 'در حال ارسال...';
+// ========== ارسال به تلگرام ==========
+sendToTelegramBtn.addEventListener('click', function() {
+  if (lastCalculation.finalPrice === 0 && lastCalculation.basePrice === 0) {
+    alert('ابتدا قیمت نهایی را محاسبه کنید');
+    return;
+  }
+  
+  var phone = buyerPhoneInput.value.trim();
+  if (phone && !validatePhone(phone)) {
+    alert('شماره تلفن وارد شده معتبر نیست (باید بین ۱۰ تا ۱۱ رقم باشد)');
+    return;
+  }
+  
+  var sellerId = sellerIdInput.value.trim() || 'ثبت نشده';
+  var buyerName = buyerNameInput.value.trim() || 'ثبت نشده';
+  var buyerPhone = buyerPhoneInput.value.trim() || 'ثبت نشده';
+  var productName = productNameInput.value.trim() || 'ثبت نشده';
+  var typeMap = { 'new': 'طلای نو', 'used': 'طلای دست دوم', 'parsian': 'سکه پارسیان' };
+  
+  var message = 'سفارش جدید - حله گلد\n\n';
+  message += 'شماره فاکتور: ' + currentInvoiceNumber + '\n';
+  message += 'تاریخ: ' + new Date().toLocaleDateString('fa-IR') + '\n';
+  message += 'زمان: ' + new Date().toLocaleTimeString('fa-IR') + '\n\n';
+  message += '----------------------------------------\n';
+  message += 'شناسه فروشنده: ' + sellerId + '\n';
+  message += 'نام خریدار: ' + buyerName + '\n';
+  message += 'تلفن خریدار: ' + buyerPhone + '\n';
+  message += '۴ رقم آخر تلفن: ' + getLast4Digits(buyerPhone) + '\n';
+  message += 'نام کالا: ' + productName + '\n';
+  message += '----------------------------------------\n';
+  message += 'نوع کالا: ' + (typeMap[lastCalculation.type] || lastCalculation.type) + '\n';
+  message += 'عیار: ' + lastCalculation.karat + '\n';
+  message += 'وزن: ' + lastCalculation.weight + ' گرم\n';
+  message += 'قیمت روز هر گرم: ' + formatNumber(lastCalculation.goldPrice) + ' تومان\n';
+  
+  if (lastCalculation.type === 'new') {
+    message += 'سود فروشنده: ' + lastCalculation.sellerProfit + '%\n';
+    message += 'اجرت ساخت: ' + lastCalculation.wage + '%\n';
+    message += 'مالیات: ' + lastCalculation.tax + '%\n';
+  } else {
+    message += 'سود فروشنده: ' + lastCalculation.sellerProfit + '%\n';
+  }
+  message += 'تخفیف: ' + formatNumber(lastCalculation.discount) + ' تومان\n';
+  message += '----------------------------------------\n';
+  message += 'قیمت نهایی: ' + formatNumber(lastCalculation.finalPrice) + ' تومان\n';
+  message += '----------------------------------------\n\n';
+  message += 'ثبت شده توسط اپلیکیشن حله گلد';
+
+  var btn = sendToTelegramBtn;
+  var originalText = btn.innerHTML;
+  btn.innerHTML = 'در حال ارسال <span class="spinner"></span>';
   btn.disabled = true;
+  
+  var url = 'https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage?chat_id=' + CHAT_ID + '&text=' + encodeURIComponent(message);
+  
+  fetch(url)
+    .then(function(response) { return response.json(); })
+    .then(function(result) {
+      if (result.ok) {
+        alert('سفارش با موفقیت به تلگرام ارسال شد!');
+        btn.innerHTML = 'ارسال شد';
+        setTimeout(function() { 
+          btn.innerHTML = originalText; 
+          btn.disabled = false; 
+        }, 2500);
+      } else {
+        var errorMsg = 'خطا در ارسال به تلگرام. ';
+        if (result.error_code === 403) {
+          errorMsg += 'دسترسی به بات مسدود شده است.';
+        } else if (result.error_code === 404) {
+          errorMsg += 'بات پیدا نشد.';
+        } else {
+          errorMsg += 'لطفاً دوباره تلاش کنید.';
+        }
+        throw new Error(errorMsg);
+      }
+    })
+    .catch(function(error) {
+      alert(error.message || 'خطا در ارسال به تلگرام. لطفاً دوباره تلاش کنید.');
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+    });
+});
 
-  try {
-    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`;
-    const response = await fetch(url);
-    const result = await response.json();
-    
-    if (result.ok) {
-      alert('سفارش با موفقیت به تلگرام ارسال شد!');
-      btn.innerHTML = 'ارسال شد';
-      setTimeout(() => { btn.innerHTML = originalText; btn.disabled = false; }, 2000);
+// ========== ارسال پیامک به خریدار ==========
+sendSmsBtn.addEventListener('click', function() {
+  if (lastCalculation.finalPrice === 0 && lastCalculation.basePrice === 0) {
+    alert('ابتدا قیمت نهایی را محاسبه کنید');
+    return;
+  }
+  
+  var phone = buyerPhoneInput.value.trim();
+  if (!phone) {
+    alert('لطفاً شماره تلفن خریدار را وارد کنید');
+    buyerPhoneInput.focus();
+    return;
+  }
+  
+  if (!validatePhone(phone)) {
+    alert('شماره تلفن وارد شده معتبر نیست (باید بین ۱۰ تا ۱۱ رقم باشد)');
+    buyerPhoneInput.focus();
+    return;
+  }
+  
+  var smsMessage = buildSmsMessage();
+  
+  var phoneNumber = phone.replace(/\D/g, '');
+  if (phoneNumber.startsWith('0')) {
+    phoneNumber = phoneNumber.substring(1);
+  }
+  if (!phoneNumber.startsWith('98')) {
+    phoneNumber = '98' + phoneNumber;
+  }
+  
+  var smsUrl = 'sms:' + phoneNumber + '?body=' + encodeURIComponent(smsMessage);
+  
+  var isMobile = /Android|iPhone|iPad|iPod|BlackBerry|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+  
+  if (isMobile) {
+    window.location.href = smsUrl;
+  } else {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(smsMessage).then(function() {
+        alert('پیام در کلیپبورد کپی شد. لطفاً آن را در اپلیکیشن پیامک خود جایگذاری کنید و به شماره ' + phone + ' ارسال کنید.');
+      }).catch(function() {
+        prompt('پیام را کپی کنید و به شماره ' + phone + ' ارسال کنید:', smsMessage);
+      });
     } else {
-      throw new Error(result.description || 'خطا در ارسال');
+      prompt('پیام را کپی کنید و به شماره ' + phone + ' ارسال کنید:', smsMessage);
     }
-  } catch (error) {
-    alert('خطا در ارسال به تلگرام. لطفاً دوباره تلاش کنید.');
-    console.error('خطا:', error);
-    btn.innerHTML = originalText;
-    btn.disabled = false;
   }
 });
+
+// ========== دکمه ریست ==========
+resetBtn.addEventListener('click', function() {
+  if (confirm('آیا مطمئن هستید که می‌خواهید همه اطلاعات را پاک کنید؟')) {
+    sellerIdInput.value = '';
+    buyerNameInput.value = '';
+    buyerPhoneInput.value = '';
+    productNameInput.value = '';
+    productType.value = '';
+    karatInput.value = '750';
+    goldPriceInput.value = '';
+    discountInput.value = '0';
+    dynamicFields.innerHTML = '';
+    dynamicValues = {};
+    resultArea.classList.add('hidden');
+    discountWarning.style.display = 'none';
+    invoiceNumberDisplay.textContent = '';
+    currentInvoiceNumber = '';
+    tempSellerInfo = '';
+    lastCalculation = { finalPrice: 0, type: '', weight: 0, goldPrice: 0, sellerProfit: 0, wage: 0, tax: 0, karat: 750, discount: 0, basePrice: 0 };
+    alert('همه اطلاعات پاک شد.');
+  }
+});
+
+// ========== بارگذاری اولیه ==========
+productType.value = '';
 </script>
 </body>
 </html>
