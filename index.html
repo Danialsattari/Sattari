@@ -225,7 +225,7 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml;u
   <div class="modal-box">
     <h3>مشخصات فروشنده</h3>
     <textarea id="sellerInfoInput" placeholder="نام فروشنده، آدرس، شماره تماس را وارد کنید..."></textarea>
-    <div class="modal-actions"><button class="btn-confirm" id="modalConfirm">تأیید و چاپ</button><button class="btn-cancel" id="modalCancel">انصراف</button></div>
+    <div class="modal-actions"><button class="btn-confirm" id="modalConfirm">تأیید</button><button class="btn-cancel" id="modalCancel">انصراف</button></div>
   </div>
 </div>
 
@@ -278,6 +278,7 @@ var DEFAULT_SELLER = 'زرگری ستاري\nآدرس: آذربایجان شرق
 var lastCalculation = { finalPrice: 0, type: '', weight: 0, goldPrice: 0, sellerProfit: 0, wage: 0, tax: 0, karat: 750, discount: 0, basePrice: 0 };
 var tempSellerInfo = '';
 var currentInvoiceNumber = '';
+var pendingAction = null; // 'print', 'telegram', 'sms'
 
 // ========== توابع کمکی ==========
 function toEnglishNumbers(str) {
@@ -539,17 +540,15 @@ calcBtn.addEventListener('click', function() {
   resultArea.classList.remove('hidden');
 });
 
-// ========== چاپ فاکتور ==========
-printInvoiceBtn.addEventListener('click', function() {
-  if (lastCalculation.finalPrice === 0 && lastCalculation.basePrice === 0) {
-    alert('ابتدا قیمت نهایی را محاسبه کنید');
-    return;
-  }
-  sellerModal.classList.add('active');
+// ========== نمایش مودال فروشنده ==========
+function showSellerModal(action) {
+  pendingAction = action;
   sellerInfoInput.value = '';
+  sellerModal.classList.add('active');
   sellerInfoInput.focus();
-});
+}
 
+// ========== تأیید مودال فروشنده ==========
 modalConfirm.addEventListener('click', function() {
   var sellerInfo = sellerInfoInput.value.trim();
   
@@ -567,15 +566,37 @@ modalConfirm.addEventListener('click', function() {
   
   tempSellerInfo = sellerInfo;
   sellerModal.classList.remove('active');
-  generateInvoice(sellerInfo);
+  
+  // اجرای اقدام مربوطه
+  if (pendingAction === 'print') {
+    generateInvoice(sellerInfo);
+  } else if (pendingAction === 'telegram') {
+    sendToTelegram();
+  } else if (pendingAction === 'sms') {
+    sendSms();
+  }
+  pendingAction = null;
 });
 
 modalCancel.addEventListener('click', function() { 
-  sellerModal.classList.remove('active'); 
+  sellerModal.classList.remove('active');
+  pendingAction = null;
 });
 
 sellerModal.addEventListener('click', function(e) { 
-  if (e.target === sellerModal) sellerModal.classList.remove('active'); 
+  if (e.target === sellerModal) {
+    sellerModal.classList.remove('active');
+    pendingAction = null;
+  }
+});
+
+// ========== چاپ فاکتور ==========
+printInvoiceBtn.addEventListener('click', function() {
+  if (lastCalculation.finalPrice === 0 && lastCalculation.basePrice === 0) {
+    alert('ابتدا قیمت نهایی را محاسبه کنید');
+    return;
+  }
+  showSellerModal('print');
 });
 
 function generateInvoice(sellerInfo) {
@@ -605,7 +626,6 @@ function generateInvoice(sellerInfo) {
   html += '<div class="inv-section"><div class="inv-section-title">مشخصات خریدار</div>';
   html += '<div class="inv-row"><span class="label">نام خریدار</span><span class="value">' + buyerName + '</span></div>';
   html += '<div class="inv-row"><span class="label">شماره تلفن</span><span class="value">' + buyerPhone + '</span></div>';
-  // ۴ رقم آخر تلفن حذف شد
   html += '</div>';
   
   html += '<div class="inv-section"><div class="inv-section-title">اطلاعات کالا</div>';
@@ -648,6 +668,10 @@ sendToTelegramBtn.addEventListener('click', function() {
     return;
   }
   
+  showSellerModal('telegram');
+});
+
+function sendToTelegram() {
   var sellerId = sellerIdInput.value.trim() || 'ثبت نشده';
   var buyerName = buyerNameInput.value.trim() || 'ثبت نشده';
   var buyerPhone = buyerPhoneInput.value.trim() || 'ثبت نشده';
@@ -717,7 +741,7 @@ sendToTelegramBtn.addEventListener('click', function() {
       btn.innerHTML = originalText;
       btn.disabled = false;
     });
-});
+}
 
 // ========== ارسال پیامک به خریدار ==========
 sendSmsBtn.addEventListener('click', function() {
@@ -739,6 +763,11 @@ sendSmsBtn.addEventListener('click', function() {
     return;
   }
   
+  showSellerModal('sms');
+});
+
+function sendSms() {
+  var phone = buyerPhoneInput.value.trim();
   var smsMessage = buildSmsMessage();
   
   var phoneNumber = phone.replace(/\D/g, '');
@@ -766,7 +795,7 @@ sendSmsBtn.addEventListener('click', function() {
       prompt('پیام را کپی کنید و به شماره ' + phone + ' ارسال کنید:', smsMessage);
     }
   }
-});
+}
 
 // ========== دکمه ریست ==========
 resetBtn.addEventListener('click', function() {
