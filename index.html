@@ -545,20 +545,25 @@ printInvoiceBtn.addEventListener('click', function() {
     alert('ابتدا قیمت نهایی را محاسبه کنید');
     return;
   }
-  if (tempSellerInfo) {
-    sellerInfoInput.value = tempSellerInfo;
-  }
   sellerModal.classList.add('active');
+  sellerInfoInput.value = '';
   sellerInfoInput.focus();
 });
 
 modalConfirm.addEventListener('click', function() {
   var sellerInfo = sellerInfoInput.value.trim();
-  if (!sellerInfo) { 
-    alert('لطفاً مشخصات فروشنده را وارد کنید.'); 
-    return; 
+  
+  // اگر کاربر "ادمین" نوشت، مشخصات پیش‌فرض رو جایگزین کن
+  if (sellerInfo === 'ادمین') {
+    sellerInfo = DEFAULT_SELLER;
   }
-  if (sellerInfo.trim() === 'ادمین') sellerInfo = DEFAULT_SELLER;
+  
+  // اگر خالی بود یا فقط "ادمین" نبود و خالی بود، اجبار به پر کردن
+  if (!sellerInfo || sellerInfo.trim() === '') {
+    alert('لطفاً مشخصات فروشنده را وارد کنید. (برای استفاده از مشخصات پیش‌فرض کافیست کلمه "ادمین" را وارد کنید)');
+    sellerInfoInput.focus();
+    return;
+  }
   
   tempSellerInfo = sellerInfo;
   sellerModal.classList.remove('active');
@@ -600,7 +605,8 @@ function generateInvoice(sellerInfo) {
   html += '<div class="inv-section"><div class="inv-section-title">مشخصات خریدار</div>';
   html += '<div class="inv-row"><span class="label">نام خریدار</span><span class="value">' + buyerName + '</span></div>';
   html += '<div class="inv-row"><span class="label">شماره تلفن</span><span class="value">' + buyerPhone + '</span></div>';
-  html += '<div class="inv-row"><span class="label">۴ رقم آخر تلفن</span><span class="value">' + getLast4Digits(buyerPhone) + '</span></div></div>';
+  // ۴ رقم آخر تلفن حذف شد
+  html += '</div>';
   
   html += '<div class="inv-section"><div class="inv-section-title">اطلاعات کالا</div>';
   html += '<div class="inv-row"><span class="label">شناسه فروشنده</span><span class="value">' + sellerId + '</span></div>';
