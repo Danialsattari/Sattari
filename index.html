@@ -13,6 +13,16 @@ body::before{content:'';position:absolute;width:100%;height:100%;background:radi
 .glass-card{background:#BFC9D1;border-radius:48px;border:1px solid rgba(255,255,255,0.25);box-shadow:0 20px 60px -16px rgba(37,52,63,0.12);width:100%;max-width:480px;margin:auto;padding:32px 24px 36px;transition:all .3s ease;animation:fadeInScale .5s ease}
 @keyframes fadeInScale{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:scale(1)}}
 .header{text-align:center;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid rgba(37,52,63,0.06)}
+
+/* استایل اضافه شده برای لوگو */
+.logo {
+  max-width: 260px; /* عرض لوگو - در صورت نیاز تغییر دهید */
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
 h1{font-size:26px;font-weight:700;color:#25343F;letter-spacing:-.3px}
 .sub{color:#5a6a7a;font-size:12px;letter-spacing:.2px;margin-top:4px}
 .form-group{margin-bottom:16px}
@@ -212,7 +222,11 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml;u
 </head>
 <body>
 <div class="glass-card">
-  <div class="header"><h1>حله گلد</h1><div class="sub">محاسبه گر هوشمند طلا و سکه</div></div>
+  <!-- لوگو در اینجا قرار می‌گیرد -->
+  <div class="header">
+    <img src="اینجا_رشته_Base64_کپی_شده_رو_بذار" alt="لوگو" class="logo">
+    <div class="sub">محاسبه گر هوشمند طلا و سکه</div>
+  </div>
 
   <div class="form-group"><label>شناسه فروشنده</label><input type="text" id="sellerId" placeholder="مثال: 1001"></div>
   <div class="form-group"><label>نام خریدار</label><input type="text" id="buyerName" placeholder="مثال: علی محمدی"></div>
@@ -805,7 +819,7 @@ function sendSms() {
   } else {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(smsMessage).then(function() {
-        alert('پیام در کلیپبورد کپی شد. لطفاً آن را در اپلیکیشن پیامک خود جایگذاری کنید و به شماره ' + phone + ' ارسال کنید.');
+        alert('پیام در کلیپ‌بورد کپی شد. لطفاً آن را در اپلیکیشن پیامک خود جای‌گذاری کنید و به شماره ' + phone + ' ارسال کنید.');
       }).catch(function() {
         prompt('پیام را کپی کنید و به شماره ' + phone + ' ارسال کنید:', smsMessage);
       });
