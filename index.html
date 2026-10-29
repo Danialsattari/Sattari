@@ -63,131 +63,149 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml;u
 .spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,0.3);border-radius:50%;border-top-color:#fff;animation:spin .6s linear infinite;vertical-align:middle;margin-left:6px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .sms-note{font-size:9px;color:#6a7a8a;text-align:center;margin-top:4px;display:block}
-@media print{
-  body{background:#fff;padding:0;margin:0;position:static;overflow:visible}
-  .glass-card{display:none}
-  .modal-overlay{display:none!important}
-  .invoice-print{
-    display:block;
-    width:148mm;
-    height:210mm;
-    padding:8mm 10mm;
-    margin:0 auto;
-    background:#fff;
-    font-family:'Vazir','Tahoma',sans-serif;
-    direction:rtl;
-    box-sizing:border-box;
-    position:relative;
-    color:#25343F;
-    font-size:10px;
-    page-break-after:avoid;
-    overflow:hidden;
+
+@media print {
+  body {
+    background: #fff;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: visible;
+    position: static;
   }
-  .invoice-print .inv-header{
-    text-align:center;
-    border-bottom:2px solid #25343F;
-    padding-bottom:4px;
-    margin-bottom:6px;
-    position:relative;
+  .glass-card {
+    display: none;
   }
-  .invoice-print .inv-header h2{
-    font-size:16px;
-    font-weight:700;
-    color:#25343F;
-    margin:0;
-    letter-spacing:1px;
+  .modal-overlay {
+    display: none !important;
   }
-  .invoice-print .inv-header .inv-number{
-    font-size:9px;
-    color:#25343F;
-    font-weight:700;
-    position:absolute;
-    left:0;
-    top:0;
-    margin:0;
+  .invoice-print {
+    display: block;
+    width: 148mm;
+    min-height: 100vh;
+    padding: 6mm 8mm;
+    margin: 0 auto;
+    background: #fff;
+    font-family: 'Vazir', 'Tahoma', sans-serif;
+    direction: rtl;
+    box-sizing: border-box;
+    color: #25343F;
+    font-size: 10px;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    overflow: visible;
+    position: relative;
+    border: none;
+    box-shadow: none;
   }
-  .invoice-print .inv-section{
-    margin-bottom:4px;
+  .invoice-print .inv-header {
+    text-align: center;
+    border-bottom: 2px solid #25343F;
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+    position: relative;
   }
-  .invoice-print .inv-section-title{
-    font-size:8.5px;
-    font-weight:700;
-    color:#25343F;
-    border-bottom:1px solid #25343F;
-    padding-bottom:1.5px;
-    margin-bottom:2px;
-    letter-spacing:.5px;
+  .invoice-print .inv-header h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #25343F;
+    margin: 0;
+    letter-spacing: 1px;
   }
-  .invoice-print .inv-row{
-    display:flex;
-    justify-content:space-between;
-    padding:1.5px 0;
-    font-size:8.5px;
-    border-bottom:1px dashed rgba(37,52,63,0.06);
+  .invoice-print .inv-header .inv-number {
+    font-size: 9px;
+    color: #25343F;
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
   }
-  .invoice-print .inv-row .label{
-    color:#5a6a7a;
-    font-weight:400;
+  .invoice-print .inv-section {
+    margin-bottom: 4px;
   }
-  .invoice-print .inv-row .value{
-    color:#25343F;
-    font-weight:500;
+  .invoice-print .inv-section-title {
+    font-size: 8.5px;
+    font-weight: 700;
+    color: #25343F;
+    border-bottom: 1px solid #25343F;
+    padding-bottom: 1.5px;
+    margin-bottom: 2px;
+    letter-spacing: .5px;
   }
-  .invoice-print .inv-total-box{
-    background:#EAF2F2;
-    padding:4px 10px;
-    border-radius:4px;
-    margin-top:4px;
-    text-align:center;
-    border:2px solid #25343F;
+  .invoice-print .inv-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5px 0;
+    font-size: 8.5px;
+    border-bottom: 1px dashed rgba(37,52,63,0.06);
   }
-  .invoice-print .inv-total-box .total-label{
-    font-size:8px;
-    color:#5a6a7a;
+  .invoice-print .inv-row .label {
+    color: #5a6a7a;
+    font-weight: 400;
   }
-  .invoice-print .inv-total-box .total-price{
-    font-size:16px;
-    font-weight:800;
-    color:#25343F;
+  .invoice-print .inv-row .value {
+    color: #25343F;
+    font-weight: 500;
   }
-  .invoice-print .inv-signatures{
-    display:flex;
-    justify-content:space-between;
-    margin-top:8px;
-    padding-top:6px;
-    border-top:1px solid #25343F;
+  .invoice-print .inv-total-box {
+    background: #EAF2F2;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-top: 4px;
+    text-align: center;
+    border: 2px solid #25343F;
   }
-  .invoice-print .inv-signatures .sign-box{
-    text-align:center;
-    width:45%;
+  .invoice-print .inv-total-box .total-label {
+    font-size: 8px;
+    color: #5a6a7a;
   }
-  .invoice-print .inv-signatures .sign-box .sign-line{
-    width:100%;
-    height:1px;
-    background:#25343F;
-    margin-top:12px;
-    margin-bottom:2px;
+  .invoice-print .inv-total-box .total-price {
+    font-size: 16px;
+    font-weight: 800;
+    color: #25343F;
   }
-  .invoice-print .inv-signatures .sign-box .sign-label{
-    font-size:7px;
-    color:#5a6a7a;
+  .invoice-print .inv-signatures {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    padding-top: 6px;
+    border-top: 1px solid #25343F;
   }
-  .invoice-print .inv-footer{
-    text-align:center;
-    font-size:6.5px;
-    color:#6a7a8a;
-    margin-top:6px;
-    padding-top:4px;
-    border-top:1px solid #EAF2F2;
-    position:absolute;
-    bottom:6mm;
-    left:0;
-    right:0;
+  .invoice-print .inv-signatures .sign-box {
+    text-align: center;
+    width: 45%;
   }
-  .invoice-print .inv-footer .brand{
-    color:#25343F;
-    font-weight:600;
-    font-size:7px;
+  .invoice-print .inv-signatures .sign-box .sign-line {
+    width: 100%;
+    height: 1px;
+    background: #25343F;
+    margin-top: 12px;
+    margin-bottom: 2px;
+  }
+  .invoice-print .inv-signatures .sign-box .sign-label {
+    font-size: 7px;
+    color: #5a6a7a;
+  }
+  .invoice-print .inv-footer {
+    position: absolute;
+    bottom: 4mm;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 6.5px;
+    color: #6a7a8a;
+    margin-top: 6px;
+    padding-top: 4px;
+    border-top: 1px solid #EAF2F2;
+  }
+  .invoice-print .inv-footer .brand {
+    color: #25343F;
+    font-weight: 600;
+    font-size: 7px;
   }
 }
 </style>
